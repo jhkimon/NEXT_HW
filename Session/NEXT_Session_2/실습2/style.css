@@ -1,0 +1,20 @@
+.box1 {
+  background-color: #eb7399;
+}
+.box2 {
+  background-color: #eaeb73;
+}
+.box3 {
+  background-color: #77eb73;
+}
+.box4 {
+  background-color: #73bbea;
+}
+
+
+
+.box {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
