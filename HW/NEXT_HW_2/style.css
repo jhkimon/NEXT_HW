@@ -1,0 +1,142 @@
+body {
+    width: 390px;
+    height: 844px;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.plain-text {
+    font-weight: 500;
+    font-size: 14px;
+}
+.profile {
+    border-radius: 100px;
+}
+
+/* Navigation */
+
+.nav {
+    display: flex;
+    width: 390px;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-chevron-left {
+    padding-left: 2%;
+    flex-grow: 1;
+}
+
+.account {
+    display: flex;
+    flex-grow: 3;
+    justify-content: center;
+}
+
+.account-name {
+    margin-right: 5px;
+}
+
+.fa-circle-check {
+    color: blueviolet;
+}
+
+.fa-bell {
+    flex-grow: 0.3;
+}
+
+.fa-ellipsis {
+    flex-grow: 0.3;
+}
+
+/* Main Info */
+
+.main-info {
+    display: flex;
+    align-items: center;
+}
+
+.stat {
+    display: flex;
+    flex-grow: 3;
+    justify-content: space-around;
+    margin: 5%;
+}
+
+.large-profile {
+    padding: 5px;
+}
+
+.posting,
+.following,
+.follower {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Introduction */
+
+.intro {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-intro {
+    display: flex;
+    margin: 10px;
+}
+
+.account-subintro {
+    display: flex;
+    margin: 10px;
+}
+
+.fa-link {
+    margin-left: 10px;
+}
+
+.account-link {
+    font-size: 14px;
+}
+
+.account-link a {
+    text-decoration: none;
+    color: rgb(176, 148, 201);
+}
+
+/* Friend */
+
+.friend {
+    display: flex;
+    align-items: center;
+    margin-top: 3%;
+}
+
+.friend-profile {
+    display: flex;
+    padding-left: 10px;
+    margin-right: 10px;
+}
+
+.friend-profile img {
+    margin-right: -10px;
+}
+
+.friend-follow {
+    margin-left: 6%;
+    font-size: 0.9em;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+/* Interaction */
+
+/* Story */
+
+/* Postings */
