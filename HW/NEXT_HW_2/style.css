@@ -4,9 +4,9 @@ body {
     width: 390px;
     height: 800px;
     background-color: #000000;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 16px;
+    color: #e6e2e2;
+    font-weight: 600;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -16,21 +16,27 @@ body {
 
 /* Fonts */
 
+.account-text {
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .plain-text {
-    font-weight: 500;
+    font-weight: 300;
     font-size: 14px;
+    color: #e6e2e2;
 }
 
 .interaction-text {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .story-text {
     font-weight: 500;
     font-size: 11px;
     margin-top: 10%;
-    color: #ffffff;
+    color: #e6e2e2;
 }
 
 /* Top Navigation */
@@ -38,7 +44,7 @@ body {
 .nav-top {
     display: flex;
     width: 390px;
-    height: 60px;
+    height: 50px;
     align-items: center;
     justify-content: space-between;
 }
@@ -60,6 +66,7 @@ body {
 
 .fa-circle-check {
     color: blueviolet;
+    padding-top: 1%;
 }
 
 .fa-bell,
@@ -83,6 +90,7 @@ body {
 
 .large-profile {
     padding: 5px;
+    margin-left: 1%;
 }
 
 .stat-info {
@@ -101,12 +109,12 @@ body {
 
 .account-intro {
     display: flex;
-    margin: 2%;
+    margin: 1.5% 2%;
 }
 
 .account-subintro {
     display: flex;
-    margin: 2%;
+    margin: 1.5% 2%;
 }
 
 .fa-link {
@@ -114,12 +122,11 @@ body {
 }
 
 .account-link {
-    font-size: 14px;
+    color: #e6e2e2;
 }
 
 .account-link a {
     text-decoration: none;
-    color: rgb(176, 148, 201);
 }
 
 /* Friend */
@@ -155,7 +162,7 @@ body {
 }
 
 .friend-follow {
-    margin-left: 3%;
+    margin-left: 1%;
     font-size: 0.9em;
     word-wrap: break-word;
     text-align: left;
@@ -175,7 +182,7 @@ body {
     flex-grow: 2;
     text-align: center;
     line-height: 30px;
-    background-color: rgb(73, 71, 71);
+    background-color: #282727;
     border-radius: 6%;
     height: 30px;
     margin-left: 2%;
@@ -203,7 +210,7 @@ body {
 
 .story-image {
     padding: 5%;
-    border: 1.5px solid grey;
+    border: 1px solid grey;
 }
 
 /* Posting Navigation */
@@ -250,7 +257,7 @@ body {
 }
 
 .selected-img {
-    border-top: 1px solid #ffffff;
+    border-top: 1px solid #e6e2e2;
 }
 
 .non-selected-img {
