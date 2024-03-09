@@ -102,18 +102,14 @@ body {
 
 /* Introduction */
 
-.intro {
+.introduction {
     display: flex;
     flex-direction: column;
-}
-
-.account-intro {
-    display: flex;
     margin: 1.5% 2%;
 }
 
+.account-intro,
 .account-subintro {
-    display: flex;
     margin: 1.5% 2%;
 }
 
@@ -168,6 +164,7 @@ body {
 }
 
 /* Interaction Keys */
+
 .interaction {
     display: flex;
     width: 390px;
