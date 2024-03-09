@@ -145,25 +145,24 @@ body {
 
 .friend-top {
     margin-right: -10px;
-    z-index: 2;
+    z-index: 3;
     border: 0.5px solid black;
 }
 
 .friend-mid {
     margin-right: -10px;
-    z-index: 1;
+    z-index: 2;
     border: 0.5px solid black;
 }
 
 .friend-bottom {
     margin-right: -10px;
-    z-index: 3;
+    z-index: 1;
     border: 0.5px solid black;
 }
 
 .friend-follow {
     margin-left: 1%;
-    font-size: 0.9em;
     word-wrap: break-word;
     text-align: left;
 }
@@ -243,19 +242,6 @@ body {
     flex-direction: column;
     justify-content: flex-start;
 }
-
-.posting-top {
-    display: flex;
-}
-
-.posting-bottom {
-    display: flex;
-}
-
-.posting-img {
-    flex-grow: 1;
-}
-
 .selected-img {
     border-top: 1px solid #e6e2e2;
 }
