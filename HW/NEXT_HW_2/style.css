@@ -224,6 +224,7 @@ body {
     padding-bottom: 6%;
     justify-content: center;
 }
+
 .non-selected {
     color: rgb(73, 71, 71);
     flex-grow: 1;
@@ -239,6 +240,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
 }
+
 .selected-img {
     border-top: 1px solid #e6e2e2;
 }
