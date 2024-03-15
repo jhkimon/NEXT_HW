@@ -14,7 +14,7 @@ while True:
     count += 1
     if result == "맞음":
         print(f"당신의 숫자를 {count}번만에 맞췄습니다.")
-        break;
+        break
     elif result == "큼":
         low = mid
     elif result == "작음":
