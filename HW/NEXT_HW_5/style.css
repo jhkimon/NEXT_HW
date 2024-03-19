@@ -1,0 +1,118 @@
+/* Universal Settings */
+/* IPhone 14 Pro Max (430 * 932) 기준으로 제작 */
+
+* {
+    background-color: #f1f3f4;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #1a1f29;
+    font-optical-sizing: none;
+    font-size: 14px;
+}
+
+.nav {
+    height: 55px;
+    width: 390px;
+    margin: 2% 2%;
+}
+
+.container {
+    height: 160px;
+    width: 390px;
+    border-radius: 10px;
+    margin: 3% 2%;
+    background-color: #fff;
+}
+
+/* Text Setting */
+
+.title-text {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.info-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.info {
+    display: flex;
+    flex-direction: flex-start;
+    align-items: center;
+    margin: 4% 5%;
+}
+
+.title {
+    flex-grow: 10;
+}
+
+.right {
+    flex-grow: 0.2;
+}
+
+.right-hidden {
+    flex-grow: 0.2;
+    color: #fff;
+}
+
+/* Top Navigation */
+
+.nav-top {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: #f1f3f4;
+    justify-content: space-between;
+}
+
+.toss-logo {
+    flex-grow: 4;
+    align-self: center;
+}
+
+.nav-icon {
+    color: #202632;
+    flex-grow: 0.2;
+    align-self: center;
+}
+
+/* Advertisement */
+
+.advertise {
+    display: flex;
+    flex-direction: column;
+}
+
+.advertise-today {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 4% 8%;
+}
+
+.fa-chart-line {
+    flex-grow: 1.5;
+}
+
+.advertise-info {
+    flex-grow: 3;
+}
+
+/* Card Container */
+
+.card-total {
+    width: 390px;
+    border-radius: 10px;
+    margin: 3% 2%;
+    background-color: #fff;
+}
+
+.card {
+    height: 100px;
+    width: 390px;
+    background-color: #fff;
+}
