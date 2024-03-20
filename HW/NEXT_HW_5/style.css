@@ -84,6 +84,7 @@ body {
     position: fixed;
     top: 0;
     padding-bottom: 1%;
+    border-radius: 3%;
     margin-top: 0;
     z-index: 999;
 }
@@ -120,7 +121,7 @@ body {
 .advertise {
     display: flex;
     flex-direction: column;
-    margin-top: 8%;
+    margin-top: 15%;
 }
 
 .advertise-today {
@@ -210,7 +211,7 @@ body {
 }
 
 .group {
-    margin-bottom: 20%;
+    margin-bottom: 30%;
 }
 
 .group-icon {
@@ -220,7 +221,6 @@ body {
     margin-left: 2%;
     border-radius: 100%;
     position: relative;
-    z-index: 2;
 }
 
 .fa-people-group {
@@ -229,7 +229,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 3;
 }
 
 /* Nav Bottom */
@@ -238,7 +237,8 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 3%;
+    padding-top: 6%;
+    border-radius: 3%;
     position: fixed;
     bottom: 0;
     background-color: #f1f3f4;
