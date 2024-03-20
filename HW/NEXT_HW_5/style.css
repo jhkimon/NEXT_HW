@@ -1,49 +1,65 @@
 /* Universal Settings */
 /* IPhone 14 Pro Max (430 * 932) 기준으로 제작 */
 
-* {
+body {
     background-color: #f1f3f4;
     font-family: 'Noto Sans KR', sans-serif;
     color: #1a1f29;
-    font-optical-sizing: none;
     font-size: 14px;
 }
 
 .nav {
-    height: 55px;
+    height: 40px;
     width: 390px;
-    margin: 2% 2%;
+    margin-left: 2%;
+    margin-top: 2%;
 }
 
 .container {
     height: 160px;
     width: 390px;
     border-radius: 10px;
+    margin: 2% 2%;
+    background-color: #fff;
+}
+
+.card-total {
+    width: 390px;
+    border-radius: 10px;
     margin: 3% 2%;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.round-img {
+    border-radius: 100%;
 }
 
 /* Text Setting */
 
 .title-text {
     font-size: 22px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .info-text {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
-.bg-white {
-    background-color: #fff;
+.nav-text {
+    font-size: 14px;
+    font-weight: 500;
 }
+
+/* Container Title Setting */
 
 .info {
     display: flex;
     flex-direction: flex-start;
     align-items: center;
-    margin: 4% 5%;
+    padding: 5% 6%;
 }
 
 .title {
@@ -63,8 +79,6 @@
 
 .nav-top {
     display: flex;
-    position: sticky;
-    top: 0;
     background-color: #f1f3f4;
     justify-content: space-between;
 }
@@ -90,8 +104,14 @@
 .advertise-today {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin: 4% 8%;
+    padding-left: 3%;
+    padding-top: 2%;
+}
+
+.advertise-info {
+    flex-grow: 2;
+    padding-bottom: 2%;
+    padding-left: 1%;
 }
 
 .fa-chart-line {
@@ -99,20 +119,69 @@
 }
 
 .advertise-info {
-    flex-grow: 3;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
 }
 
 /* Card Container */
 
-.card-total {
-    width: 390px;
-    border-radius: 10px;
-    margin: 3% 2%;
-    background-color: #fff;
-}
-
 .card {
     height: 100px;
     width: 390px;
-    background-color: #fff;
+    padding-left: 3%;
+}
+
+.icon,
+.account-info {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
+}
+
+.icon {
+    padding-top: 2%;
+    width: 50px;
+}
+
+.account-info {
+    width: 200px;
+}
+
+.interaction {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.interaction-btn {
+    border-radius: 10px;
+    background-color: #f1f3f4;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 50px;
+}
+
+/* Investment Container */
+
+.card-img {
+    padding-left: 4%;
+}
+
+/* Nav Bottom */
+
+.nav-bottom {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1%;
+}
+
+.quick-menu {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.menu {
+    padding-bottom: 15px;
 }
