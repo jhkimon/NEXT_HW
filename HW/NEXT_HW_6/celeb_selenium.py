@@ -22,7 +22,7 @@ file_name = f'celeb_birthday_{month}월.csv'
 file = open(file_name, mode='w', newline='')
 
 writer = csv.writer(file)
-writer.writerow(["날짜", "유명인 순위", "이름", "대표 직업" "유명 작품"])
+writer.writerow(["날짜", "유명인 순위", "이름", "대표 직업", "유명 작품"])
 
 for day in range(1, last_day_of_month + 1):
     url = f"https://www.imdb.com/search/name/?birth_monthday={month:02d}-{day:02d}"
