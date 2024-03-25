@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Personal Portfolio</title>
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'project.css'%}" />
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header class="header">
+            <a href="/info" class="logo">PortFolio.</a>
+
+            <nav class="navbar">
+                <a href="/info">Home</a>
+                <a href="/project" class="active">Project</a>
+            </nav>
+        </header>
+
+        <section id="project" class="project">
+            <div class="container">
+                <div class="project-content">
+                    <h2><span class="dot">.</span>Projects</h2>
+                    <div class="project-list"></div>
+                </div>
+                <div class="skill-content">
+                    <h2><span class="dot">.</span>Skills</h2>
+                    <div class="skill-group">
+                        <div class="skill">html</div>
+                        <div class="skill">CSS</div>
+                        <div class="skill">Python</div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill">crawling</div>
+                        <div class="skill">+ more</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

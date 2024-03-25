@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from PortfolioApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.info, name='info'),
+    path('info', views.info, name='info'),
+    path('project', views.project, name='project'),
+
 ]
