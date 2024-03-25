@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: aliceblue;
+}
+
+.main-container {
+    margin: 10%;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3%;
+    text-align: center;
+}
+
+textarea {
+    display: block;
+    margin: 0 auto;
+}
+
+input {
+    display: block;
+    margin: 20px auto;
+    width: 150px;
+    height: 40px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}

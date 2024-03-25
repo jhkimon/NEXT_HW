@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>글자 수 세기</title>
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'count.css'%}" />
+    </head>
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="title"> 원하는 문장을 입력창에 적어주세요.</div>
+            <form action="{%url 'result'%}" method="post">
+                {%csrf_token%}
+                <textarea name="text" cols="80" rows="20"></textarea>
+                <input type="submit" value="결과 확인하기" />
+            </form>
+        </div>
+    </body>
+</html>
