@@ -1,0 +1,15 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.count-container {
+    width: 200px;
+    text-align: center;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+}

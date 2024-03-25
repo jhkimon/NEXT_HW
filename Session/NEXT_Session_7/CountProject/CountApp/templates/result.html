@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>글자 수 세기</title>
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'result.css'%}" />
+    </head>
+    <body>
+        <h1 class="title">제가 작성한 텍스트는 {{text}}입니다.</h1>
+        <div class="count-container">
+            <span>글자 수: {{total_len}}</span>
+            <span>공백 제외 글자수 : {{without_blank_len}}</span>
+            <span>단어 수: {{word_cnt}}</span>
+        </div>
+    </body>
+</html>
