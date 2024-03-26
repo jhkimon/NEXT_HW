@@ -60,8 +60,21 @@ body {
     max-width: 600px;
 }
 
+.text-content {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-left: 15%;
+    margin-bottom: 5%;
+    color: #00abf0;
+}
+
+.multiple-text {
+    color: #ededed;
+}
+
 .home-content h1 {
-    font-size: 56px;
+    font-size: 50px;
     font-weight: 700;
     line-height: 1.2;
 }
@@ -122,4 +135,10 @@ body {
     font-size: 30px;
     color: #00abf0;
     text-decoration: none;
+}
+
+@media screen and (max-width: 1600px) {
+    .text-content {
+        display: none;
+    }
 }

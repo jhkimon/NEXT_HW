@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Personal Portfolio</title>
         {%load static%}
-        <link rel="stylesheet" type="text/css" href="{%static 'info.css'%}" />
+        <link rel="stylesheet" type="text/css" href="{%static 'infos.css'%}" />
         <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css" />
         <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css" />
     </head>
@@ -21,7 +21,7 @@
 
         <section id="home" class="home">
             <div class="home-content">
-                <h1>안녕하세요, <span class="multiple-text">김정현입니다.</span></h1>
+                <h1>안녕하세요, 김정현입니다.</h1>
                 <h3>Currently Studying on..</h3>
                 <p>
                     제 페이지에 오신 것을 환영합니다. 해당 사이트에서는 제가 가진 스킬들과 함께 지금까지 진행했던
@@ -32,6 +32,7 @@
                     <a href="/project">Check my Projects</a>
                 </div>
             </div>
+            <div class="text-content">print<span class="multiple-text">("Hello World!")</span></div>
             <div class="home-sci">
                 <a href="https://github.com/jhkimon/jhkimon"><i class="fa-brands fa-github fa-xl"></i></a>
                 <a href="https://www.instagram.com/jhkim_922/"><i class="fa-brands fa-instagram fa-xl"></i></a>
@@ -43,10 +44,10 @@
         <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
         <script>
             var typed = new Typed('.multiple-text', {
-                strings: ['', '김정현입니다.'],
+                strings: ['', '("Hello World!")'],
                 typeSpeed: 100,
                 backSpeed: 100,
-                loop: false,
+                loop: true,
             });
         </script>
     </body>
