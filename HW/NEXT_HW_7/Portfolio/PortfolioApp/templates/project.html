@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Personal Portfolio</title>
         {%load static%}
-        <link rel="stylesheet" type="text/css" href="{%static 'project.css'%}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'project.css' %}" />
         <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css" />
         <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css" />
     </head>
@@ -20,21 +20,41 @@
         </header>
 
         <section id="project" class="project">
-            <div class="container">
+            <div class="main-container">
                 <div class="project-content">
                     <h2><span class="dot">.</span>Projects</h2>
-                    <div class="project-list"></div>
+                    <div class="project-list">
+                        <div class="project-box">
+                            <a href="https://github.com/jhkimon/NEXT_HW/tree/main/HW/NEXT_HW_2">
+                                <img src="{% static 'images/instagram.jpg' %}" width="300" height="300" />
+                                <div class="project-text">Project 1. Instagram Clone Coding</div>
+                            </a>
+                        </div>
+                        <div class="project-box">
+                            <a href="https://github.com/jhkimon/NEXT_HW/tree/main/HW/NEXT_HW_5">
+                                <img src="{% static 'images/toss.jpg' %}" width="300" height="300" />
+                                <div class="project-text">Project 2. Toss Clone Coding</div>
+                            </a>
+                        </div>
+
+                        <div class="project-box">
+                            <a href="https://github.com/jhkimon/NEXT_HW/tree/main/HW/NEXT_HW_6">
+                                <img src="{% static 'images/crawling.jpg' %}" width="300" height="300" />
+                                <div class="project-text">Project 3. Movie Web Crawling</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="skill-content">
                     <h2><span class="dot">.</span>Skills</h2>
                     <div class="skill-group">
-                        <div class="skill">html</div>
+                        <div class="skill">HTML</div>
                         <div class="skill">CSS</div>
                         <div class="skill">Python</div>
                     </div>
                     <div class="skill-group">
-                        <div class="skill">crawling</div>
-                        <div class="skill">+ more</div>
+                        <div class="skill">Crawling</div>
+                        <div class="skill">and more..</div>
                     </div>
                 </div>
             </div>

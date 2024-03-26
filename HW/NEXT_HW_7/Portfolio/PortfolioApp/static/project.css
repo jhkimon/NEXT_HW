@@ -49,6 +49,7 @@ body {
 }
 
 /* Project  */
+
 .project {
     height: 100vh;
     display: flex;
@@ -56,7 +57,7 @@ body {
     padding: 10% 10%;
 }
 
-.container {
+.main-container {
     display: flex;
     flex-direction: column;
 }
@@ -74,17 +75,53 @@ body {
 .project-list {
     display: flex;
     flex-direction: row;
-    height: 50vh;
 }
 
+.project-box {
+    padding: 1.5%;
+    position: relative;
+    display: block;
+}
+
+.project-box img {
+    margin: 10% 0%;
+}
+
+.project-box:hover img {
+    opacity: 0.5;
+    transition: opacity 0.5s;
+}
+
+.project-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ededed;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.8s;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    z-index: 1;
+}
+
+.project-box:hover .project-text {
+    opacity: 0.8;
+    transition: opacity 0.8s;
+}
+
+/* Skill */
+
 .skill-content h2 {
-    padding-bottom: 10%;
+    margin-bottom: 4%;
 }
 
 .skill-group {
     display: flex;
     justify-content: flex-start;
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .skill {
@@ -93,9 +130,9 @@ body {
     justify-content: center;
     border: 1px solid #00abf0;
     border-radius: 100000px;
-    width: 100px;
+    width: 110px;
     height: 35px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     margin: 2%;
 }
