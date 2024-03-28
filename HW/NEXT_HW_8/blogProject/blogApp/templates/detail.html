@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>{{article.id}}번 글 상세</h1>
+        <h2>제목</h2>
+        <p>{{article.title}}</p>
+        <h2>내용</h2>
+        <p>{{article.content}}</p>
+        <h2>작성시간</h2>
+        <p>{{article.write_time}}</p>
+        <a href="{% url 'list' %}">전체 목록으로 돌아가기</a>
+    </body>
+</html>
