@@ -47,7 +47,12 @@ def list(request):
     # Pagination
     after_article = Article.objects.filter(id__gt=article.id).order_by('id').first()
     before_article = Article.objects.filter(id__lt=article.id).order_by('id').last()
-    total_article = Article.objects.all().order_by('-id')[:5]
+    total_article = Article.objects.all().order_by('-id')
+    part_article = None
+    for idx in range(article_cnt // 5 + 1):
+        part_article = total_article[(idx*5):(idx*5)+5]
+        if article in part_article:
+            break
     
     return render(request, 'main.html', {
         'article_cnt': article_cnt,
@@ -58,7 +63,7 @@ def list(request):
         'category_kr': category_kr,
         'after_article_id': after_article.id if after_article else None,
         'before_article_id': before_article.id if before_article else None,
-        'total_article': total_article
+        'total_article': part_article
         })
 
 def detail(request, article_id):
@@ -75,7 +80,12 @@ def detail(request, article_id):
     # Pagination
     after_article = Article.objects.filter(id__gt=article_id).order_by('id').first()
     before_article = Article.objects.filter(id__lt=article_id).order_by('id').last()
-    total_article = Article.objects.all().order_by('-id')[:5]
+    total_article = Article.objects.all().order_by('-id')
+    part_article = None
+    for idx in range(article_cnt // 5 + 1):
+        part_article = total_article[(idx*5):(idx*5)+5]
+        if article in part_article:
+            break
     
     return render(request, 'main.html', {
         'article_cnt': article_cnt,
@@ -86,7 +96,7 @@ def detail(request, article_id):
         'category_kr': category_kr,
         'after_article_id': after_article.id if after_article else None,
         'before_article_id': before_article.id if before_article else None,
-        'total_article': total_article
+        'total_article': part_article
         })
 
 def category(request, category):
@@ -108,7 +118,12 @@ def category(request, category):
         # Pagination
         after_article = Article.objects.filter(category=category, id__gt=article.id).order_by('id').first()
         before_article = Article.objects.filter(category=category, id__lt=article.id).order_by('id').last()
-        total_article = Article.objects.filter(category=category).all().order_by('-id')[:5]
+        total_article = Article.objects.all().filter(category=category).order_by('-id')
+        part_article = None
+        for idx in range(category_cnt // 5 + 1):
+            part_article = total_article[(idx*5):(idx*5)+5]
+            if article in part_article:
+                break
     
         return render(request, 'category.html', {
             'category': category,
@@ -121,7 +136,7 @@ def category(request, category):
             'category_kr': category_kr,
             'after_article_id': after_article.id if after_article else None,
             'before_article_id': before_article.id if before_article else None,
-            'total_article': total_article
+            'total_article': part_article
             })
     
 def detail_category(request, category, article_id):
@@ -139,7 +154,12 @@ def detail_category(request, category, article_id):
     # Pagination
     after_article = Article.objects.filter(category=category, id__gt=article_id).order_by('id').first()
     before_article = Article.objects.filter(category=category, id__lt=article_id).order_by('id').last()
-    total_article = Article.objects.filter(category=category).all().order_by('-id')[:5]
+    total_article = Article.objects.filter(category=category).all().order_by('-id')
+    part_article = None
+    for idx in range(category_cnt // 5 + 1):
+        part_article = total_article[(idx*5):(idx*5)+5]
+        if article in part_article:
+            break
     
     return render(request, 'category.html', {
         'article_cnt': article_cnt,
@@ -151,5 +171,5 @@ def detail_category(request, category, article_id):
         'category_kr': category_kr,
         'after_article_id': after_article.id if after_article else None,
         'before_article_id': before_article.id if before_article else None,
-        'total_article': total_article
+        'total_article': part_article
         })
