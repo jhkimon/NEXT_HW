@@ -3,28 +3,61 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>NEXT Blog</title>
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'new.css'%}" />
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h2>글쓰기 페이지</h2>
+        <div class="main-home"><img src="{% static 'images/main-banner.png' %}" width="1000" height="200" /></div>
+        <div class="category">
+            <div class="category-home">
+                <span class="category-header">카테고리</span>
+                <i class="fa-solid fa-chevron-up fa-2xs"></i>
+            </div>
+            <div class="category-list">
+                <span class="category-container total">
+                    <i class="fa-regular fa-file"></i>
+                    <a href="/list">전체보기</a>
+                    <span> ({{ article_cnt }}) </span>
+                </span>
+                <span class="category-container">
+                    <i class="fa-regular fa-file"></i>
+                    <a href="/list/hobby">취미</a>
+                    <span> ({{ hobby_cnt }}) </span>
+                </span>
+                <span class="category-container">
+                    <i class="fa-regular fa-file"></i>
+                    <a href="/list/food">음식</a>
+                    <span> ({{ food_cnt }}) </span>
+                </span>
+                <span class="category-container">
+                    <i class="fa-regular fa-file"></i>
+                    <a href="/list/programming">프로그래밍</a>
+                    <span> ({{ programming_cnt }}) </span>
+                </span>
+            </div>
+        </div>
         <form action="/new/" method="post">
             {% csrf_token %}
-            <div>
-                <div>글 제목</div>
-                <input type="text" name="title" required />
-            </div>
-            <div>
-                <div>글 내용</div>
-                <textarea name="content" cols="30" rows="10" required></textarea>
-            </div>
-            <div>
-                <div>카테고리 선택</div>
+            <div class="question">
+                <h1>게시글에 맞는 카테고리를 골라주세요.</h1>
                 <input type="radio" name="category" value="hobby" />
                 <label for="category1">취미</label><br />
                 <input type="radio" name="category" value="food" />
                 <label for="음식">음식</label><br />
                 <input type="radio" name="category" value="programming" />
                 <label for="프로그래밍">프로그래밍</label><br />
+            </div>
+            <div class="question">
+                <h1>글 제목을 입력해주세요.</h1>
+                <input class="title" type="text" name="title" placeholder="제목을 입력해주세요." required />
+            </div>
+            <div class="question">
+                <h1>글 내용을 입력해주세요.</h1>
+                <textarea name="content" cols="100" rows="10" placeholder="내용을 입력해주세요." required></textarea>
             </div>
             <button type="submit">작성완료</button>
         </form>

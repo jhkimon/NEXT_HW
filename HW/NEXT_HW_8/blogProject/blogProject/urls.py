@@ -20,8 +20,10 @@ from blogApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.list, name='list'),
     path('new/', views.new, name='new'),
     path('list', views.list, name='list'),
     path('detail/<int:article_id>', views.detail, name='detail'),
     path('list/<str:category>', views.category, name='category'),
+    path('detail/<str:category>/<int:article_id>', views.detail_category, name='detail_category'),
 ]

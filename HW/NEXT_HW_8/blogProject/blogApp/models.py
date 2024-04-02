@@ -6,8 +6,9 @@ from django.utils import timezone
 class Article(models.Model):
     title = models.CharField(max_length = 200)
     content = models.TextField()
-    category = models.CharField(max_length = 10, default='기타')
+    category = models.CharField(max_length = 20, default='others')
     write_time = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title
+    

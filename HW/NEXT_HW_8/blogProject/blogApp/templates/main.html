@@ -49,10 +49,9 @@
             </div>
         </div>
         <div class="info">
-            <span class="bold-text">{{category_kr}}</span>
-            <span> {{ category_cnt }}개의 글 </span>
+            <span class="bold-text">전체보기</span>
+            <span> {{ article_cnt }}개의 글 </span>
         </div>
-        {% if article %}
         <div class="post">
             <div class="post-category">{{category_kr}}</div>
             <div class="post-title">{{article.title}}</div>
@@ -67,15 +66,14 @@
             </div>
             <div class="post-content">{{article.content}}</div>
         </div>
-        {% endif %}
         <div class="post-list">
             <div class="post-list-info">
-                <span>이 블로그 {{category_kr}} 카테고리 글</span>
+                <span>이 블로그 전체 카테고리 글</span>
                 <a href="/list">전체 글 보기</a>
             </div>
             {% for article_lst in total_article %}
             <div class="post-list-title {% if article.id == article_lst.id %}bold-text{% endif %}">
-                <a href="{% url 'detail_category' category=article_lst.category article_id=article_lst.id %}">
+                <a href="{% url 'detail' article_id=article_lst.id %}">
                     <span>{{article_lst.title}}</span>
                 </a>
                 <span>{{article_lst.write_time}}</span>
@@ -84,7 +82,7 @@
             <div class="nav-bottom">
                 <span>
                     {% if before_article_id %}
-                    <a href="{% url 'detail_category' category=article.category article_id=before_article_id %}">
+                    <a href="{% url 'detail' before_article_id %}">
                         <i class="fa-solid fa-chevron-left fa-2xs"></i>
                         <span>이전 게시글</span>
                     </a>
@@ -92,7 +90,7 @@
                 </span>
                 <span>
                     {% if after_article_id %}
-                    <a href="{% url 'detail_category' category=article.category article_id=after_article_id %}">
+                    <a href="{% url 'detail' after_article_id %}">
                         <span>다음 게시글</span>
                         <i class="fa-solid fa-chevron-right fa-2xs"></i>
                     </a>
