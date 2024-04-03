@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'main.css'%}" />
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css" />
+        <script>
+            function done(taskId) {
+                var title = document.getElementById('title-' + taskId);
+                var checkbox = document.getElementById('done-' + taskId);
+                if (checkbox.checked) {
+                    title.classList.add('strikethrough');
+                } else {
+                    title.classList.remove('strikethrough');
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="title">
+            <a href="{% url 'home' %}">
+                <i class="fa-solid fa-check"></i>
+                My Todo List
+            </a>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="add-task">
+            <a href="{% url 'new' %}">
+                <span>+ 새로운 일</span>
+            </a>
+        </div>
+        <div class="greeting">
+            <span>{{ month }}월 {{ day }}일({{weekday}})</span>
+            <span> {{greeting}} </span>
+        </div>
+        <div class="date">오늘 할 일</div>
+        {% for t_task in today_tasks %}
+        <div class="task-container">
+            <input
+                type="checkbox"
+                name="done-{{ t_task.id }}"
+                id="done-{{ t_task.id }}"
+                onchange="done({{ t_task.id }})"
+            />
+            <a href="{% url 'detail' t_task.id %}" id="title-{{ t_task.id }}" class="task">
+                <div class="task-title">{{ t_task.title }}</div>
+            </a>
+        </div>
+        {% endfor %} {% if today_cnt == 0 %}
+        <div class="task-container no-task">🏃 오늘의 할 일을 적어보세요!</div>
+        {% endif %}
+        <div class="task-container"></div>
+        <div class="task-container"></div>
+        <div class="task-container"></div>
+        <div class="date upcoming">다음 할 일</div>
+        {% for u_task in upcoming_tasks %}
+        <div class="task-container">
+            <input
+                type="checkbox"
+                name="done-{{ u_task.id }}"
+                id="done-{{ u_task.id }}"
+                onchange="done({{ u_task.id }})"
+            />
+            <a href="{% url 'detail' u_task.id %}" id="title-{{ u_task.id }}" class="task">
+                <div class="task-title">{{ u_task.title }}</div>
+                <div class="day-remain">D - {{ u_task.days_diff }}</div>
+            </a>
+        </div>
+        {% endfor %}
+        <div class="task-container"></div>
+        <div class="task-container"></div>
+        <div class="task-container"></div>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'ud.css'%}" />
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css" />
+        <script>
+            function confirmNew() {
+                var result = confirm('새로운 할 일을 등록하시겠습니까?');
+                return result;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="title">
+            <a href="{% url 'home' %}">
+                <i class="fa-solid fa-check"></i>
+                My Todo List
+            </a>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="task-detail">새로운 할 일 등록하기</div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                <div class="task-container">
+                    <label class="task-title" for="title">Todo:</label>
+                    <input type="text" name="title" id="title" cols="30" placeholder="할 일을 입력해주세요." required />
+                </div>
+                <div class="task-container">
+                    <label for="content">Content:</label>
+                    <textarea name="content" id="content" cols="30" rows="10" placeholder="메모할 내용을 기록해주세요." required /></textarea> </textarea>
+                </div>
+                <div class="task-container">
+                    <label for="due-date">마감 날짜: </label>
+                    <input type="date" name="due_date" id="due_date" value="{{task.due_date|date:'Y-m-d'}}" required />
+                </div>
+            </div>
+            <button type="submit" onclick="return confirmNew();" />등록하기</button>
+        </form>
+        <div class="nav-home">
+            <a href="{% url 'home' %}" >목록으로</a>
+        </div>
+    </body>
+</html>

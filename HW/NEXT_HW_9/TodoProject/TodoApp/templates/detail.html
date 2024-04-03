@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'detail.css'%}" />
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css" />
+        <script>
+            function confirmDelete() {
+                var result = confirm('할 일을 삭제하시겠습니까?');
+                return result;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="title">
+            <a href="{% url 'home' %}">
+                <i class="fa-solid fa-check"></i>
+                My Todo List
+            </a>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="task-detail">할 일 목록</div>
+        <div class="task-container">
+            <div class="task-title">Todo: {{ task.title }}</div>
+        </div>
+        <div class="task-container content">Content:</div>
+        <div class="task-container">
+            <div class="task-content">{{ task.content }}</div>
+        </div>
+        <div class="task-container">마감까지 남은 기간:</div>
+        <div class="task-container">
+            {% if days_diff > 0 %}
+            <div class="task-content">{{ days_diff }}일</div>
+            {% else %}
+            <div class="task-content">D-Day!</div>
+            {% endif %}
+        </div>
+        <div class="nav">
+            <a href="{% url 'update' task.id %}">수정하기</a>
+            <a href="{% url 'home' %}">목록으로</a>
+            <a href="{% url 'delete' task.id %}" onclick="return confirmDelete();">삭제하기</a>
+        </div>
+    </body>
+</html>

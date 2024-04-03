@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+html {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: #fefffe;
+    color: #333;
+    border: 2px solid #333;
+    border-radius: 10%;
+    width: 50%;
+    height: 90%;
+    padding: 3%;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+/* Title */
+
+.title {
+    font-size: 18px;
+    font-weight: 500;
+    width: 87%;
+    margin: auto;
+    padding: 3% 3% 3% 5%;
+    display: flex;
+    align-items: center;
+}
+
+.title a {
+    flex-grow: 1.5;
+}
+
+.title fa-bars {
+    flex-grow: 1;
+}
+
+.fa-check {
+    margin-right: 2%;
+}
+
+/* Task Detail */
+
+.task-detail {
+    font-size: 20px;
+    font-weight: 500;
+    width: 87%;
+    margin: auto;
+    padding: 3% 3% 3% 3%;
+}
+
+.task-container {
+    width: 85%;
+    margin: auto;
+    min-height: 5%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #c4c4c4;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.task-content {
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0% 5%;
+}
+
+/* Navigation */
+
+.nav {
+    width: 70%;
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav a {
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #333;
+    padding: 3%;
+    border-radius: 10%;
+}
