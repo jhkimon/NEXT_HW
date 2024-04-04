@@ -12,9 +12,9 @@ body {
     background-color: #fefffe;
     color: #333;
     border: 2px solid #333;
-    border-radius: 10%;
-    width: 50%;
-    height: 90%;
+    border-radius: 3%;
+    width: 45%;
+    height: 80%;
     padding: 3%;
 }
 
@@ -43,70 +43,23 @@ a {
     flex-grow: 1.5;
 }
 
-.title fa-bars {
-    flex-grow: 1;
+.title fa-circle-info {
+    flex-grow: 2;
 }
 
 .fa-check {
     margin-right: 2%;
 }
 
-.add-task {
-    width: 85%;
-    height: 5.5%;
-    margin: auto;
-    font-size: 16px;
-    font-weight: 500;
-    background-color: #f6f7f6;
-    display: flex;
-    align-items: center;
-    margin-top: 1%;
-}
+/* Task Detail */
 
-.add-task a {
-    color: #c4c4c4;
-}
-
-.add-task span {
-    position: relative;
-    left: 20%;
-}
-
-.greeting {
-    font-size: 17px;
-    font-weight: 500;
-    font-weight: 500;
-    width: 85%;
-    margin: auto;
-    margin-top: 3%;
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5% 1%;
-    border-bottom: 1px solid #333;
-    text-align: right;
-}
-.greeting span {
-    min-width: 30%;
-}
-
-.greeting span:first-child {
-    text-align: left;
-}
-
-.date {
+.task-detail {
     font-size: 20px;
     font-weight: 500;
-    width: 90%;
+    width: 87%;
     margin: auto;
-    padding-left: 5%;
-    padding-top: 3%;
+    padding: 3% 3% 3% 3%;
 }
-
-.upcoming {
-    padding-top: 5%;
-}
-
-/* Task */
 
 .task-container {
     width: 85%;
@@ -117,15 +70,35 @@ a {
     align-items: center;
     border-bottom: 1px solid #c4c4c4;
     padding: 5px 0;
+    font-size: 16px;
+    font-weight: 500;
 }
 
-.task {
-    margin-left: 5%;
-    width: 85%;
+.task-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.task-content {
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0% 5%;
+}
+
+/* Navigation */
+
+.nav {
+    width: 70%;
+    margin: auto;
+    margin-top: 5%;
     display: flex;
     justify-content: space-between;
 }
 
-.no-task {
+.nav a {
+    font-size: 16px;
     font-weight: 500;
+    border: 1px solid #333;
+    padding: 3%;
+    border-radius: 10%;
 }

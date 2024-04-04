@@ -19,7 +19,7 @@ greeting_message = ['Today will be a good day☀️',
 def home(request):
     today = timezone.now().date()
     today_tasks = Task.objects.filter(due_date__date=today).order_by('due_date')
-    upcoming_tasks = Task.objects.filter(due_date__date__gt=today).order_by('due_date')
+    upcoming_tasks = Task.objects.filter(due_date__date__gt=today).order_by('due_date')[:5]
 
     for task in upcoming_tasks:
         delta = task.due_date.date() - today
