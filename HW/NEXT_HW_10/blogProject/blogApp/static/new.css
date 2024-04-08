@@ -1,0 +1,28 @@
+/* New Post */
+
+form {
+    position: relative;
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form h1 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.question {
+    margin-bottom: 15px;
+}
+
+.title {
+    width: 100%;
+}

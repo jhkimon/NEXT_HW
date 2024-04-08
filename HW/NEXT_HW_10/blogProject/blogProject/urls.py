@@ -1,0 +1,31 @@
+"""
+URL configuration for blogProject project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from blogApp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.list, name='list'),
+    path('new/', views.new, name='new'),
+    path('list', views.list, name='list'),
+    path('detail/<int:article_id>', views.detail, name='detail'),
+    path('list/<str:category>', views.category, name='category'),
+    path('detail/<str:category>/<int:article_id>', views.detail_category, name='detail_category'),
+    path('delete-comment/<int:article_pk>/<int:comment_pk>/', views.delete_comment, name='delete-comment'),
+    path('delete-reply/<int:article_pk>/<int:comment_pk>/<int:reply_pk>', views.delete_reply, name='delete-reply')
+]

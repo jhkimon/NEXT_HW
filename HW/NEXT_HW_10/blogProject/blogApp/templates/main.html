@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{%static 'main.css'%}" />
+{% endblock %}
+    <body>
+        {% block content %}
+        <div class="info">
+            <span class="bold-text">전체보기</span>
+            <span> {{ article_cnt }}개의 글 </span>
+        </div>
+        <!-- Post -->
+        <div class="post">
+            <div class="post-category">{{category_kr}}</div>
+            <div class="post-title">{{article.title}}</div>
+            <div class="post-info">
+                <img src="{% static 'images/profile.png' %}" width="30" height="30" />
+                <span>김정현</span>
+                <span>{{article.write_time | date:'Y.m.d. H:i'}}</span>
+                <span class="write">
+                    <i class="fa-solid fa-pen"></i>
+                    <a href="{% url 'new' %}">새 글 작성</a>
+                </span>
+            </div>
+            <div class="post-content">{{article.content}}</div>
+        </div>
+        <a href="#comment-form">
+            <div class="comment-cnt">
+                <i class="fa-regular fa-comment"></i>
+                <div>댓글 {{ article.comments.all|length }}</div>
+            </div>
+        </a>
+        <!-- Comment -->
+        {% for comment in article.comments.all %}
+        <div class="comment">
+            <div class="comment-info">
+                <i class="fa-solid fa-circle-user fa-xl"></i>
+                <div>{{ comment.user }}</div>
+            </div>
+            {% if comment.content != "삭제된 댓글입니다." %}
+            <div class="comment-content">
+                {{ comment.content }}
+            </div>
+            {% else %}
+            <div class="comment-content" style="font-weight: 700;">
+                {{ comment.content }}
+            </div>
+            {% endif %}
+            <div class="comment-time">
+                <span>{{ comment.write_time|date:'Y.m.d. H:i' }} |</span>
+                {% if comment.content != "삭제된 댓글입니다." %}
+                    <a href="{% url 'delete-comment' article.id comment.id %}"> 삭제</a>
+                {% endif %}
+            </div>
+            <div class="write-reply">
+                <span>답글</span>
+            </div>
+            <div class="replies">
+                {% for reply in comment.replies.all %}
+                <div class="reply">
+                    <i class="fa-solid fa-reply fa-rotate-180"></i>
+                    <div class="reply-comment">
+                        <div class="comment-info">
+                            <i class="fa-solid fa-circle-user fa-xl"></i>
+                            <div>{{ reply.user }}</div>
+                        </div>
+                        <div class="comment-content">
+                            {{ reply.content }}
+                        </div>
+                        <div class="comment-time">
+                            <span>{{ reply.write_time|date:'Y.m.d. H:i' }} | </span>
+                            <a href="{% url 'delete-reply' article.id comment.id reply.id %}"> 삭제</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- Write Reply -->
+                <div class="reply">
+                    <i class="fa-solid fa-reply fa-rotate-180"></i>
+                    <form class="reply-form" action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                        <div class="input-info">
+                            <label class="bold-text" for="user">유저 이름</label>
+                            <textarea name="user" id="user" cols="20" rows="1" required /></textarea>
+                        </div>
+                        <textarea class="input-content" name="content" cols="100" rows="5" placeholder="댓글을 작성해주세요." required /></textarea> 
+                        <button type="submit" name="reply">답글 작성하기</button>   
+                    </form>
+                </div>                
+            </div>
+        </div>
+        {% endfor %}
+        <!-- Write Comment -->
+        <form id="comment-form" class="comment-form" action="" method="post">
+        {% csrf_token %}
+            <div class="input-info">
+                <label class="bold-text" for="user">유저 이름</label>
+                <textarea name="user" id="user" cols="20" rows="1" required /></textarea>
+            </div>
+            <textarea class="input-content" name="content" cols="100" rows="5" placeholder="댓글을 작성해주세요." required /></textarea> 
+            <button type="submit" name="comment">댓글 작성하기</button> 
+        </form>
+        <!-- Post List -->
+        <div class="post-list">
+            <div class="post-list-info">
+                <span>이 블로그 전체 카테고리 글</span>
+                <a href="/list">전체 글 보기</a>
+            </div>
+            {% for article_lst in total_article %}
+            <div class="post-list-title {% if article.id == article_lst.id %}bold-text{% endif %}">
+                <a href="{% url 'detail' article_id=article_lst.id %}">
+                    <span>{{article_lst.title}}</span>
+                </a>
+                <span>{{article_lst.write_time|date:'Y.m.d. H:i'}}</span>
+            </div>
+            {% endfor %}
+            <div class="nav-bottom">
+                <span>
+                    {% if before_article_id %}
+                    <a href="{% url 'detail' before_article_id %}">
+                        <i class="fa-solid fa-chevron-left fa-2xs"></i>
+                        <span>이전 게시글</span>
+                    </a>
+                    {% endif %}
+                </span>
+                <span>
+                    {% if after_article_id %}
+                    <a href="{% url 'detail' after_article_id %}">
+                        <span>다음 게시글</span>
+                        <i class="fa-solid fa-chevron-right fa-2xs"></i>
+                    </a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </body>
+    {% endblock %}
+</html>
