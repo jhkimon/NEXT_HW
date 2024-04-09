@@ -33,15 +33,16 @@ def new(request):
     })
 
 def list(request):
+    # Article
+    article = Article.objects.order_by('id').last()
+    category_kr = category_names[article.category]
+
     # Counts
     article_cnt = Article.objects.count()
     hobby_cnt = Article.objects.filter(category="hobby").count()
     food_cnt = Article.objects.filter(category="food").count()
     programming_cnt = Article.objects.filter(category="programming").count()
-
-    # Article
-    article = Article.objects.order_by('id').last()
-    category_kr = category_names[article.category]
+    vaild_comment_cnt = article.comments.filter(is_deleted=False).count()
 
     # Pagination
     after_article = Article.objects.filter(id__gt=article.id).order_by('id').first()
@@ -83,6 +84,7 @@ def list(request):
         'hobby_cnt': hobby_cnt,
         'food_cnt': food_cnt,
         'programming_cnt': programming_cnt,
+        'vaild_comment_cnt': vaild_comment_cnt,
         'article': article,
         'category_kr': category_kr,
         'after_article_id': after_article.id if after_article else None,
@@ -91,15 +93,16 @@ def list(request):
         })
 
 def detail(request, article_id):
+    # Article
+    article =  Article.objects.get(pk = article_id)
+    category_kr = category_names[article.category]
+
     # Counts
     article_cnt = Article.objects.count()
     hobby_cnt = Article.objects.filter(category="hobby").count()
     food_cnt = Article.objects.filter(category="food").count()
     programming_cnt = Article.objects.filter(category="programming").count()
-
-    # Article
-    article =  Article.objects.get(pk = article_id)
-    category_kr = category_names[article.category]
+    vaild_comment_cnt = article.comments.filter(is_deleted=False).count()
 
     # Pagination
     after_article = Article.objects.filter(id__gt=article_id).order_by('id').first()
@@ -141,6 +144,7 @@ def detail(request, article_id):
         'hobby_cnt': hobby_cnt,
         'food_cnt': food_cnt,
         'programming_cnt': programming_cnt,
+        'vaild_comment_cnt': vaild_comment_cnt,
         'article': article,
         'category_kr': category_kr,
         'after_article_id': after_article.id if after_article else None,
@@ -149,22 +153,23 @@ def detail(request, article_id):
         })
 
 def category(request, category):
+    # Article
+    article = Article.objects.filter(category=category).order_by('id').last()
+    category_kr = category_names[article.category]
+
     # Counts
     article_cnt = Article.objects.count()
     hobby_cnt = Article.objects.filter(category="hobby").count()
     food_cnt = Article.objects.filter(category="food").count()
     programming_cnt = Article.objects.filter(category="programming").count()
     category_cnt = Article.objects.filter(category=category).count()
+    vaild_comment_cnt = article.comments.filter(is_deleted=False).count()
     
     if category_cnt == 0:
         return render(request, 'category.html', {
             'category_cnt': category_cnt
         })
     else:
-        # Article
-        article = Article.objects.filter(category=category).order_by('id').last()
-        category_kr = category_names[article.category]
-
         # Pagination
         after_article = Article.objects.filter(category=category, id__gt=article.id).order_by('id').first()
         before_article = Article.objects.filter(category=category, id__lt=article.id).order_by('id').last()
@@ -206,6 +211,7 @@ def category(request, category):
             'hobby_cnt': hobby_cnt,
             'food_cnt': food_cnt,
             'programming_cnt': programming_cnt,
+            'vaild_comment_cnt': vaild_comment_cnt,
             'category_cnt': category_cnt,
             'article': article,
             'category_kr': category_kr,
@@ -215,16 +221,17 @@ def category(request, category):
             })
     
 def detail_category(request, category, article_id):
+    # Article
+    article = Article.objects.get(pk = article_id)
+    category_kr = category_names[category]
+
     # Counts
     article_cnt = Article.objects.count()
     hobby_cnt = Article.objects.filter(category="hobby").count()
     food_cnt = Article.objects.filter(category="food").count()
     programming_cnt = Article.objects.filter(category="programming").count()
     category_cnt = Article.objects.filter(category=category).count()
-
-    # Article
-    article = Article.objects.get(pk = article_id)
-    category_kr = category_names[category]
+    vaild_comment_cnt = article.comments.filter(is_deleted=False).count()
 
     # Pagination
     after_article = Article.objects.filter(category=category, id__gt=article_id).order_by('id').first()
@@ -260,12 +267,12 @@ def detail_category(request, category, article_id):
             )
 
         return redirect('detail_category', category, article_id)
-    
     return render(request, 'category.html', {
         'article_cnt': article_cnt,
         'hobby_cnt': hobby_cnt,
         'food_cnt': food_cnt,
         'programming_cnt': programming_cnt,
+        'vaild_comment_cnt': vaild_comment_cnt,
         'category_cnt': category_cnt,
         'article': article,
         'category_kr': category_kr,
@@ -279,9 +286,9 @@ def delete_reply(request, article_pk, comment_pk, reply_pk):
     reply.delete()
 
     reply_cnt = Reply.objects.filter(comment_id=comment_pk).count()
+    comment = Comment.objects.get(pk=comment_pk)
 
-    if reply_cnt == 0:
-        comment = Comment.objects.get(pk=comment_pk)
+    if reply_cnt == 0 and comment.is_deleted:
         comment.delete()
         
     return redirect('detail', article_pk)
@@ -292,6 +299,7 @@ def delete_comment(request, article_pk, comment_pk):
 
     if reply_cnt > 0:
         comment.content = '삭제된 댓글입니다.'
+        comment.is_deleted = True
         comment.save()
     else:
         comment.delete()

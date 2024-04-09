@@ -221,6 +221,10 @@ button {
     justify-content: space-between;
 }
 
+.cnt-text {
+    font-size: 14px;
+}
+
 .nav-bottom {
     display: flex;
     justify-content: center;

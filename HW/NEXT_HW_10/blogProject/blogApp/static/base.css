@@ -89,12 +89,12 @@ a {
 
 /* Footer */
 footer {
-    margin-top: 20vh;
+    margin-top: 15vh;
     padding: 3% 10%;
-    min-height: 15vh;
+    min-height: 10vh;
     position: relative;
     width: 100%;
-    background-color: #e7eded;
+    background-color: #e7ede7;
 }
 
 nav a,

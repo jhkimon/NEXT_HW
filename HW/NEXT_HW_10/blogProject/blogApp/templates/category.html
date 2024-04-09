@@ -28,7 +28,7 @@
         <a href="#comment-form">
             <div class="comment-cnt">
                 <i class="fa-regular fa-comment"></i>
-                <div>댓글 {{ article.comments.all|length }}</div>
+                <div>댓글 {{ vaild_comment_cnt }}</div>
             </div>
         </a>
         {% endif %}
@@ -111,10 +111,11 @@
             </div>
             {% for article_lst in total_article %}
             <div class="post-list-title {% if article.id == article_lst.id %}bold-text{% endif %}">
-                <a href="{% url 'detail_category' category=article_lst.category article_id=article_lst.id %}">
+                <a href="{% url 'detail' article_id=article_lst.id %}">
                     <span>{{article_lst.title}}</span>
+                    <span class="cnt-text">({{article_lst.comment_count}})</span>
                 </a>
-                <span>{{article_lst.write_time}}</span>
+                <span>{{article_lst.write_time|date:'Y.m.d. H:i'}}</span>
             </div>
             {% endfor %}
             <div class="nav-bottom">
