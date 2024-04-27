@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% block css %} {% endblock css %}
+        <title>NEXT Blog</title>
+        {%load static%}
+        <link rel="stylesheet" type="text/css" href="{%static 'base.css'%}" />
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        {% if category_cnt == 0 %}
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                alert('현재 작성된 글이 없습니다.');
+                window.location.href = '{% url "list" %}';
+            });
+        </script>
+        {% endif %}
+        <!-- Home -->
+        <div class="top-navbar">
+            <span class="navbar__menu__item">
+                <a href="{% url 'list' %}">Home </a>
+            </span>
+            {% if user.is_authenticated %}
+            <span>
+                <a href="{% url 'new' %}"> | 글 작성</a>
+            </span>
+            <span class="navbar__menu__item">
+                <a href="{% url 'logout' %}">| 로그아웃</a>
+            </span>
+            {% else %}
+            <span class="navbar__menu__item">
+                <a href="{% url 'login' %}"> | 로그인 | </a>
+            </span>
+            <span class="navbar__menu__item">
+                <a href="{% url 'signup' %}">회원가입</a>
+            </span>
+            {% endif %}
+        </div>
+        <div class="main-home"><img src="{% static 'images/main-banner.png' %}" width="1000" height="200" /></div>
+        <div class="category">
+            <div class="category-home">
+                <span class="category-header">카테고리</span>
+                <i class="fa-solid fa-chevron-up fa-2xs"></i>
+            </div>
+            <div class="category-list">
+                <span class="category-container total">
+                    <i class="fa-regular fa-file"></i>
+                    <a href="{% url "list" %}">전체보기</a>
+                    <span> ({{ article_cnt }}) </span>
+                </span>
+                <span class="category-container">
+                    <i class="fa-regular fa-file"></i>
+                    <a href="{% url 'category' 'hobby' %}">취미</a>
+                    <span> ({{ hobby_cnt }}) </span>
+                </span>
+                <span class="category-container">
+                    <i class="fa-regular fa-file"></i>
+                    <a href="{% url 'category' 'food' %}">음식</a>
+                    <span> ({{ food_cnt }}) </span>
+                </span>
+                <span class="category-container">
+                    <i class="fa-regular fa-file"></i>
+                    <a href="{% url 'category' 'programming' %}">프로그래밍</a>
+                    <span> ({{ programming_cnt }}) </span>
+                </span>
+            </div>
+        </div>
+        {% block content %} {% endblock content %}
+        <!-- Footer -->
+        <footer>
+            <nav>
+                <a href="https://github.com/jhkimon" target="_blank">Github</a>
+                <a href="https://www.linkedin.com/in/%EC%A0%95%ED%98%84-%EA%B9%80-883a442b2/" target="_blank">
+                    | LinkedIn
+                </a>
+            </nav>
+            <div>NEXT BLOG 2024.</div>
+            <div class="copyright">Copyright 2024. All Rights Reserved.</div>
+        </footer>
+    </body>
+</html>

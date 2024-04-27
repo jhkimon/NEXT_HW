@@ -1,0 +1,277 @@
+/* Posting  */
+
+.info {
+    position: relative;
+    width: 80%;
+    padding: 20px;
+}
+
+.post {
+    position: relative;
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-settings {
+    margin-top: 20px;
+    margin-left: 3px;
+    margin-right: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-category {
+    font-size: 18px;
+    font-weight: 500;
+    color: #909090;
+}
+
+.post-title {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.post-info {
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #909090;
+}
+
+.post-info img {
+    border-radius: 100%;
+    border: 0.5px solid #909090;
+}
+
+.post-info span {
+    margin: 0px 8px;
+}
+
+.write {
+    border: 1px solid #333;
+    padding: 3px 5px;
+}
+
+.post-content {
+    margin-top: 5vh;
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 80vh;
+}
+
+/* Comment */
+
+.article-footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    align-items: center;
+}
+
+.comment-cnt {
+    display: flex;
+    cursor: pointer;
+    padding: 7px 10px;
+    text-wrap: nowrap;
+    align-items: center;
+    bottom: auto;
+}
+
+.fa-comment {
+    margin-right: 6%;
+}
+
+.comment-cnt div {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    width: 80%;
+    height: 10%;
+    border-bottom: 1px solid #909090;
+    padding: 15px 0px;
+}
+
+.comment-info {
+    display: flex;
+    align-items: center;
+}
+
+.comment-info div {
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.comment-user {
+    display: flex;
+    align-items: center;
+}
+
+.comment-user div {
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.fa-circle-user {
+    color: #333;
+}
+
+.comment-content {
+    margin-top: 7px;
+    font-size: 15px;
+}
+
+.comment-time {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #909090;
+}
+
+.comment-time a {
+    font-weight: 600;
+    color: #333;
+}
+
+.reply-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    width: 80%;
+}
+
+.write-reply {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 7px 0px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid #333;
+    width: 38px;
+    height: 28px;
+}
+
+/* Reply, Comment */
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    justify-content: flex-start;
+    width: 80%;
+    border: 1px solid #333;
+}
+
+.reply {
+    margin-left: 10px;
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.fa-reply {
+    margin-right: 15px;
+}
+
+.reply-form {
+    border: 1px solid #333;
+    width: 95%;
+    margin-right: auto;
+}
+
+.input-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 15px 15px 3px;
+}
+
+.input-info label {
+    margin-right: 10px;
+}
+
+.input-content {
+    margin: 1% 3%;
+    position: relative;
+    width: 94%;
+}
+
+.submit-container {
+    display: flex;
+}
+
+.sercet {
+    border-top: 0.5px solid #909090;
+    padding: 8px 10px;
+    flex-grow: 2;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.submit-container button {
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    border-top: 0.5px solid #909090;
+    border-left: 0.5px solid #909090;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+/* Post List */
+
+.post-list {
+    position: relative;
+    width: 85%;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-list-info {
+    border-bottom: 1.5px solid #333;
+    padding: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.post-list-info span {
+    font-weight: 700;
+}
+
+.post-list-title {
+    border-bottom: 1px solid #909090;
+    padding: 7px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cnt-text {
+    font-size: 14px;
+}
+
+.nav-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-bottom span {
+    margin: 5px;
+}

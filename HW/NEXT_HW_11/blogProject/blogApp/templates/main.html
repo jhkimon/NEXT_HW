@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{%static 'main.css'%}" />
+{% endblock %}
+    <body>
+        {% block content %}
+        <div class="info">
+            <span class="bold-text">전체보기</span>
+            <span> {{ article_cnt }}개의 글 </span>
+        </div>
+        <!-- Post -->
+        <div class="post">
+            <div class="post-settings">
+                <div class="post-category">{{category_kr}}</div>
+                {% if user == article.creator or user.is_superuser %}
+                <a href="{% url 'delete-article' article.id %}">
+                    <i class="fa-solid fa-xmark"></i>
+                </a>
+                {% endif %}
+            </div>
+            <div class="post-title">{{article.title}}</div>
+            <div class="post-info">
+                <img src="{% static 'images/profile.png' %}" width="30" height="30" />
+                <span>{{article.creator}}</span>
+                <span>{{article.write_time | date:'Y.m.d. H:i'}}</span>
+            </div>
+            <div class="post-content">{{article.content}}</div>
+        </div>
+        <div class="article-footer">
+            <a href="#comment-form">
+                <div class="comment-cnt">
+                    <i class="fa-regular fa-comment"></i>
+                    <div>댓글 {{ vaild_comment_cnt }}</div>
+                </div>
+            </a>
+        {% if article.last_viewed_user %}
+            <div>
+                <span>마지막으로 확인한 사람: {{ article.last_viewed_user.username }} | </span>
+                <span>{{ article.last_viewed_time | date:'H:i'}}</span>
+            </div>
+        {% endif %}
+        </div>
+        <!-- Comment -->
+        {% for comment in article.comments.all %}
+        <div class="comment">
+            <div class="comment-info">
+                <i class="fa-solid fa-circle-user fa-xl"></i>
+                {% if comment.is_deleted %}
+                <div>(삭제)</div>
+                {% else %}
+                <div>{{ comment.creator }}</div>
+                {% endif %}
+            </div>
+            {% if comment.is_deleted %}
+            <div class="comment-content" style="font-weight: 700;">삭제된 댓글입니다.</div> 
+            {% elif user.is_authenticated == False %}
+            <div class="comment-content" style="font-weight: 700;">
+                로그인 이후에 확인 가능합니다.
+            </div>
+            {% else %}
+            <div class="comment-content">
+                {{ comment.content }}
+            </div>
+            {% endif %}
+            <div class="comment-time">
+                <span>{{ comment.write_time|date:'Y.m.d. H:i' }}</span>
+                {% if user == comment.creator or user.is_superuser and not comment.is_deleted %}
+                    <a href="{% url 'delete-comment' article.id comment.id %}">| 삭제</a>
+                {% endif %}
+            </div>
+            <div class="write-reply">
+                <span>답글</span>
+            </div>
+            <div class="replies">
+                {% for reply in comment.replies.all %}
+                <div class="reply">
+                    <i class="fa-solid fa-reply fa-rotate-180"></i>
+                    <div class="reply-comment">
+                        <div class="comment-info">
+                            <i class="fa-solid fa-circle-user fa-xl"></i>
+                            <div>{{ reply.creator }}</div>
+                        </div>
+                        {% if user.is_authenticated == False %}
+                        <div class="comment-content" style="font-weight: 700;"">
+                            로그인 이후에 확인 가능합니다.
+                        </div>
+                        {% else %}
+                        <div class="comment-content">
+                            {{ reply.content }}
+                        </div>
+                        {% endif %}
+                        <div class="comment-time">
+                            <span>{{ reply.write_time|date:'Y.m.d. H:i' }} </span>
+                            {% if user == reply.creator or user.is_superuser %}
+                            <a href="{% url 'delete-reply' article.id comment.id reply.id %}">| 삭제</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- Write Reply -->
+                <div class="reply">
+                    <i class="fa-solid fa-reply fa-rotate-180"></i>
+                    <form class="reply-form" action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                        <div class="input-info">
+                            <label class="bold-text" for="creator"> <i class="fa-solid fa-circle-user fa-xl"></i></label>
+                            <span style="font-weight: 700;">{% if user.is_authenticated %}{{ user.username }}{% else %}비회원{% endif %}</span>
+                        </div>
+                        {% if user.is_authenticated == False %}
+                        <div onclick="redirectToLogin()">
+                            <textarea class="input-content" name="content" cols="100" rows="4" placeholder="로그인 이후 댓글 작성이 가능합니다." required /></textarea>
+                        </div>
+                        {% else %}
+                        <textarea class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." required /></textarea>
+                        {% endif %} 
+                        <div class="submit-container">
+                            <span class="sercet">비밀댓글</span>
+                            <button type="submit" name="reply">등록</button>   
+                        </div>
+                    </form>
+                </div>                
+            </div>
+        </div>
+        {% endfor %}
+        <!-- Write Comment -->
+        <form id="comment-form" class="comment-form" action="" method="post">
+        {% csrf_token %}
+            <div class="input-info">
+                <label class="bold-text" for="creator"><i class="fa-solid fa-circle-user fa-xl"></i></label>
+                <span style="font-weight: 700;">{% if user.is_authenticated %}{{ user.username }}{% else %}비회원{% endif %}</span>
+            </div>
+            {% if user.is_authenticated == False %}
+            <div onclick="redirectToLogin()">
+                <textarea class="input-content" name="content" cols="100" rows="4" placeholder="로그인 이후 댓글 작성이 가능합니다." required></textarea>
+            </div>
+            {% else %}
+            <textarea class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." required /></textarea>
+            {% endif %} 
+            <div class="submit-container">
+                <span class="sercet">비밀댓글</span>
+                <button type="submit" name="comment">등록</button> 
+            </div>
+        </form>
+        <!-- Post List -->
+        <div class="post-list">
+            <div class="post-list-info">
+                <span>이 블로그 전체 카테고리 글</span>
+                <a href="{% url 'list' %}"">전체 글 보기</a>
+            </div>
+            {% for article_lst in total_article %}
+            <div class="post-list-title {% if article.id == article_lst.id %}bold-text{% endif %}">
+                <a href="{% url 'detail' article_id=article_lst.id %}">
+                    <span>{{article_lst.title}}</span>
+                    <span class="cnt-text">({{article_lst.comment_count}})</span>
+                </a>
+                <span>{{article_lst.write_time|date:'Y.m.d. H:i'}}</span>
+            </div>
+            {% endfor %}
+            <div class="nav-bottom">
+                <span>
+                    {% if before_article_id %}
+                    <a href="{% url 'detail' before_article_id %}">
+                        <i class="fa-solid fa-chevron-left fa-2xs"></i>
+                        <span>이전 게시글</span>
+                    </a>
+                    {% endif %}
+                </span>
+                <span>
+                    {% if after_article_id %}
+                    <a href="{% url 'detail' after_article_id %}">
+                        <span>다음 게시글</span>
+                        <i class="fa-solid fa-chevron-right fa-2xs"></i>
+                    </a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </body>
+    <script>
+        function redirectToLogin() {
+            alert("로그인 후에 댓글을 작성할 수 있습니다.");
+            window.location.href = "/auth/login";
+        }
+    </script>
+    {% endblock %}
+</html>
