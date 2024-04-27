@@ -28,12 +28,20 @@
             </div>
             <div class="post-content">{{article.content}}</div>
         </div>
-        <a href="#comment-form">
-            <div class="comment-cnt">
-                <i class="fa-regular fa-comment"></i>
-                <div>댓글 {{ vaild_comment_cnt }}</div>
+        <div class="article-footer">
+            <a href="#comment-form">
+                <div class="comment-cnt">
+                    <i class="fa-regular fa-comment"></i>
+                    <div>댓글 {{ vaild_comment_cnt }}</div>
+                </div>
+            </a>
+        {% if article.last_viewed_user %}
+            <div class="last-viewed">
+                <span>마지막으로 확인한 사람: {{ article.last_viewed_user.username }} | </span>
+                <span>{{ article.last_viewed_time | date:'H:i'}}</span>
             </div>
-        </a>
+        {% endif %}
+        </div>
         {% endif %}
         <!-- Comment -->
         {% for comment in article.comments.all %}
@@ -111,7 +119,9 @@
                         <textarea class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." required /></textarea>
                         {% endif %} 
                         <div class="submit-container">
-                            <span class="sercet">비밀댓글</span>
+                            <div class="sercet">
+                                <input type="checkbox" name="secret" id="sercet">비밀댓글</input>
+                            </div>
                             <button type="submit" name="reply">등록</button>   
                         </div>
                     </form>
@@ -134,7 +144,10 @@
             <textarea class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." required /></textarea>
             {% endif %} 
             <div class="submit-container">
-                <span class="sercet">비밀댓글</span>
+                <div class="sercet">
+                    <input type="checkbox" name="secret" id="sercet" />
+                    <span>비밀댓글</span>
+                </div>
                 <button type="submit" name="comment">등록</button> 
             </div>
         </form>

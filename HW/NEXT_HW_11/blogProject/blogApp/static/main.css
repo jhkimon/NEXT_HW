@@ -74,6 +74,9 @@
     justify-content: space-between;
     width: 80%;
     align-items: center;
+    border-bottom: #333 0.5px solid;
+    padding-bottom: 0.5%;
+    margin-bottom: 3%;
 }
 
 .comment-cnt {
@@ -86,11 +89,14 @@
 }
 
 .fa-comment {
-    margin-right: 6%;
+    margin-right: 5px;
 }
 
 .comment-cnt div {
-    font-size: 14px;
+    font-weight: 600;
+}
+
+.last-viewed {
     font-weight: 600;
 }
 

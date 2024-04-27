@@ -1,0 +1,96 @@
+form {
+    margin-top: 5vh;
+    width: 65%;
+    height: auto;
+}
+
+.post-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    width: 60%;
+    margin: auto;
+}
+
+.error-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-triangle-exclamation {
+    color: #f3971e;
+    margin-right: 10px;
+}
+
+.error-type {
+    font-weight: 700;
+}
+
+.login-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 50px;
+}
+
+input {
+    height: 3vh;
+    margin: 0 auto;
+    border: none;
+    background-color: transparent;
+    width: 80%;
+}
+
+.username {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 5vh;
+    border: #909090 1px solid;
+    border-radius: 3%;
+    padding-left: 11px;
+}
+
+.password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 5vh;
+    border: #909090 1px solid;
+    border-top: none;
+    border-radius: 3%;
+    padding-left: 10px;
+}
+
+.id-logo {
+    color: #909090;
+}
+
+.registration-box {
+    margin-top: 3vh;
+    height: 2vh;
+    width: 80%;
+}
+
+#post-button {
+    color: #ededed;
+    font-size: 20px;
+    font-weight: 900;
+    width: 100%;
+    border: none;
+    background-color: #f3971e;
+    height: 5vh;
+    border-radius: 2%;
+}

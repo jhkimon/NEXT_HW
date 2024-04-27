@@ -3,19 +3,33 @@
 {% endblock %} {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <div class="posts_box">
-        {% if form.errors %}
-        <ul>
-            {% for field, error_list in form.errors.items %}
-            <li>{{ field }} : {{ error_list }}</li>
+    <div class="post-box">
+        <img src="{% static 'images/next.png' %}" width="300" height="80" /></div>
+        <div class="error-box">
+            {% if form.errors %}
+            <div class="error-list">
+                {% for field, error_list in form.errors.items %}
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                {% for error in error_list %} 
+                    <span class="error-type"> {{error}} </span>
+                {% endfor %}
+            </div>
             {% endfor %}
-        </ul>
-        {% endif %}
-        <input type="text" name="username" placeholder="아이디" class="registration-input" />
-        <input type="password" name="password" placeholder="비밀번호" class="registration-input" />
-    </div>
-    <div class="registration-box">
-        <button id="post-button">로그인</button>
+            {% endif %}
+        </div>
+        <div class="login-info">
+            <div class="username">
+                <i class="fa-regular fa-id-badge id-logo"></i>
+                <input type="text" name="username" placeholder="아이디" class="registration-input" required/>
+            </div>
+            <div class="password">
+                <i class="fa-solid fa-lock id-logo"></i>
+                <input type="password" name="password" placeholder="비밀번호" class="registration-input" required/>
+            </div>
+            <div class="registration-box">
+                <button id="post-button">로그인</button>
+            </div>
+        </div>
     </div>
 </form>
 

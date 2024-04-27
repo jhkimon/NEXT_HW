@@ -3,17 +3,35 @@
 {% endblock %} {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <div class="posts_box">
-        {% if form.errors %}
-        <ul>
-            {% for field, error_list in form.errors.items %} {% for error in error_list %}
-            <li>{{ error }}</li>
-            {% endfor %} {% endfor %}
-        </ul>
-        {% endif %} {{ form }}
-    </div>
-    <div class="registration-box">
-        <button id="post-button">회원가입</button>
+    <div class="post-box">
+        <img src="{% static 'images/next.png' %}" width="300" height="80" />
+        <div class="error-box">
+            {% if form.errors %} {% for field, error_list in form.errors.items %}
+            <div class="error-list">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                {% for error in error_list %}
+                <span class="error-type"> {{error}} </span>
+                {% endfor %}
+            </div>
+            {% endfor %} {% endif %}
+        </div>
+        <div class="login-info">
+            <div class="username">
+                <i class="fa-regular fa-id-badge id-logo"></i>
+                {{ form.username }}
+            </div>
+            <div class="password">
+                <i class="fa-solid fa-lock id-logo"></i>
+                {{ form.password1 }}
+            </div>
+            <div class="password">
+                <i class="fa-solid fa-lock id-logo"></i>
+                {{ form.password2 }}
+            </div>
+            <div class="registration-box">
+                <button id="post-button">회원가입</button>
+            </div>
+        </div>
     </div>
 </form>
 {% endblock %}
