@@ -229,6 +229,10 @@
     font-weight: 600;
 }
 
+.sercet span {
+    margin-left: 1px;
+}
+
 .submit-container button {
     border: none;
     font-size: 15px;

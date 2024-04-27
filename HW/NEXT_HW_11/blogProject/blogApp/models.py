@@ -12,6 +12,7 @@ class Article(models.Model):
     write_time = models.DateTimeField(default=timezone.now)
     last_viewed_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     last_viewed_time = models.DateTimeField(default=timezone.now)
+    is_secret = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
@@ -26,6 +27,7 @@ class Comment(models.Model):
     content = models.TextField()
     write_time = models.DateTimeField(default=timezone.now)
     is_deleted = models.BooleanField(default=False)
+    is_secret = models.BooleanField(default=False)
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name= 'comments')
 
     def __str__(self):
@@ -38,6 +40,7 @@ class Reply(models.Model):
     content = models.TextField()
     write_time = models.DateTimeField(default=timezone.now)
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name= 'replies')
+    is_secret = models.BooleanField(default=False)
 
     def __str__(self):
         return self.content

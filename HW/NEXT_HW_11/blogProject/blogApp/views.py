@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.decorators import login_required
 from authApp.permissions import check_is_creator_or_admin
+from .blog_decorater import *
 
 category_names = {
     'hobby': '취미',
@@ -55,6 +56,7 @@ def list(request):
         part_article = total_article[(idx*5):(idx*5)+5]
         if article in part_article:
             break
+
     if request.user.is_authenticated:
         article.last_viewed_user = request.user
         article.last_viewed_time = timezone.now()
@@ -85,17 +87,18 @@ def list(request):
     
     return render(request, 'main.html', {
         'article_cnt': article_cnt,
-        'hobby_cnt': hobby_cnt,
-        'food_cnt': food_cnt,
-        'programming_cnt': programming_cnt,
         'vaild_comment_cnt': vaild_comment_cnt,
         'article': article,
         'category_kr': category_kr if category_kr else None,
         'after_article_id': after_article.id if after_article else None,
         'before_article_id': before_article.id if before_article else None,
-        'total_article': part_article
+        'total_article': part_article,
+        'hobby_cnt': hobby_cnt,
+        'food_cnt': food_cnt,
+        'programming_cnt': programming_cnt
         })
 
+@update_last_viewed
 def detail(request, article_id):
     # Article
     article =  Article.objects.get(pk = article_id)
@@ -173,6 +176,11 @@ def category(request, category):
         # Article
         vaild_comment_cnt = article.comments.filter(is_deleted=False).count()
         category_kr = category_names[article.category]
+
+        if request.user.is_authenticated:
+            article.last_viewed_user = request.user
+            article.last_viewed_time = timezone.now()
+            article.save()
         
         # Pagination
         after_article = Article.objects.filter(category=category, id__gt=article.id).order_by('id').first()
@@ -222,6 +230,7 @@ def category(request, category):
             'total_article': part_article
             })
     
+@update_last_viewed    
 def detail_category(request, category, article_id):
     # Article
     article = Article.objects.get(pk = article_id)
@@ -302,6 +311,7 @@ def delete_comment(request, article_pk, comment_pk):
         comment.delete()
 
     return redirect('detail', article_id=article_pk)
+
 @login_required
 @check_is_creator_or_admin(Reply, "reply_pk")
 def delete_reply(request, article_pk, comment_pk, reply_pk):
