@@ -221,7 +221,7 @@
     display: flex;
 }
 
-.sercet {
+.secret {
     border-top: 0.5px solid #909090;
     padding: 8px 10px;
     flex-grow: 2;

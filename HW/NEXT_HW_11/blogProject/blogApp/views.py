@@ -65,22 +65,25 @@ def list(request):
     if request.method == "POST":
         if "comment" in request.POST:
             content = request.POST['content']
-
+            secret = request.POST.get('secret') == 'on'
             new_comment = Comment.objects.create(
                 article=article,
                 content=content,
-                creator=request.user
+                creator=request.user,
+                is_secret=secret,
             )
 
         elif "reply" in request.POST:
             comment_id = request.POST['comment_id']
             comment = Comment.objects.get(pk=comment_id)
             content = request.POST['content']
+            secret = request.POST.get('secret') == 'on'
 
             new_reply = Reply.objects.create(
                 comment=comment,
                 content=content,
-                creator=request.user
+                creator=request.user,
+                is_secret=secret,
             )
 
         return redirect('list')
@@ -124,22 +127,25 @@ def detail(request, article_id):
     if request.method == "POST":
         if "comment" in request.POST:
             content = request.POST['content']
+            secret = request.POST.get('secret') == 'on'
 
             new_comment = Comment.objects.create(
                 article=article,
                 content=content,
-                creator=request.user
+                creator=request.user,
+                secret = secret
            )
 
         elif "reply" in request.POST:
             comment_id = request.POST['comment_id']
             comment = Comment.objects.get(pk=comment_id)
             content = request.POST['content']
-
+            secret = request.POST.get('secret') == 'on'
             new_reply = Reply.objects.create(
                 comment=comment,
                 content=content,
-                creator=request.user
+                creator=request.user,
+                secret = secret
             )
 
         return redirect('detail', article_id)    
@@ -195,22 +201,24 @@ def category(request, category):
         if request.method == "POST":
             if "comment" in request.POST:
                 content = request.POST['content']
-
+                secret = request.POST.get('secret') == 'on'
                 new_comment = Comment.objects.create(
                     article=article,
                     content=content,
-                    creator=request.user
+                    creator=request.user,
+                    secret = secret
                 )
 
             elif "reply" in request.POST:
                 comment_id = request.POST['comment_id']
                 comment = Comment.objects.get(pk=comment_id)
                 content = request.POST['content']
-
+                secret = request.POST.get('secret') == 'on'
                 new_reply = Reply.objects.create(
                     comment=comment,
                     content=content,
-                    creator=request.user
+                    creator=request.user,
+                    secret = secret
                 )
 
             return redirect('category', category)  
@@ -257,22 +265,24 @@ def detail_category(request, category, article_id):
     if request.method == "POST":
         if "comment" in request.POST:
             content = request.POST['content']
-
+            secret = request.POST.get('secret') == 'on'
             new_comment = Comment.objects.create(
                 article=article,
                 content=content,
-                creator=request.user
+                creator=request.user,
+                secret = secret
             )
 
         elif "reply" in request.POST:
             comment_id = request.POST['comment_id']
             comment = Comment.objects.get(pk=comment_id)
             content = request.POST['content']
-
+            secret = request.POST.get('secret') == 'on'
             new_reply = Reply.objects.create(
                 comment=comment,
                 content=content,
-                creator=request.user
+                creator=request.user,
+                secret = secret
             )
 
         return redirect('detail_category', category, article_id)

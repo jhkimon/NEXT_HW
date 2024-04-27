@@ -12,7 +12,6 @@ class Article(models.Model):
     write_time = models.DateTimeField(default=timezone.now)
     last_viewed_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     last_viewed_time = models.DateTimeField(default=timezone.now)
-    is_secret = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
