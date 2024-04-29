@@ -135,5 +135,5 @@ STATIC_URL = '/static/'
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/blog/list'
+LOGOUT_REDIRECT_URL = '/blog/list'

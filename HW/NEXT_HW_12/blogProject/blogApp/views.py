@@ -133,7 +133,7 @@ def detail(request, article_id):
                 article=article,
                 content=content,
                 creator=request.user,
-                secret = secret
+                is_secret = secret
            )
 
         elif "reply" in request.POST:
@@ -145,7 +145,7 @@ def detail(request, article_id):
                 comment=comment,
                 content=content,
                 creator=request.user,
-                secret = secret
+                is_secret = secret
             )
 
         return redirect('detail', article_id)    
@@ -206,7 +206,7 @@ def category(request, category):
                     article=article,
                     content=content,
                     creator=request.user,
-                    secret = secret
+                    is_secret = secret
                 )
 
             elif "reply" in request.POST:
@@ -218,7 +218,7 @@ def category(request, category):
                     comment=comment,
                     content=content,
                     creator=request.user,
-                    secret = secret
+                    is_secret = secret
                 )
 
             return redirect('category', category)  
@@ -270,7 +270,7 @@ def detail_category(request, category, article_id):
                 article=article,
                 content=content,
                 creator=request.user,
-                secret = secret
+                is_secret = secret
             )
 
         elif "reply" in request.POST:
@@ -282,7 +282,7 @@ def detail_category(request, category, article_id):
                 comment=comment,
                 content=content,
                 creator=request.user,
-                secret = secret
+                is_secret = secret
             )
 
         return redirect('detail_category', category, article_id)
