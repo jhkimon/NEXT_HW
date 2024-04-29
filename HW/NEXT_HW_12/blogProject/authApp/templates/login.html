@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block title %} login {% endblock %} {% block css %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'registration/login.css' %}" />
+{% endblock %} {% block content %} {% load account socialaccount %} {% providers_media_js %} {% load static %}
+<div class="login-box">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="post-box">
+            <img src="{% static 'images/next.png' %}" width="300" height="80" />
+        </div>
+        <div class="error-box">
+            {% if form.errors %}
+            <div class="error-list">
+                {% for field, error_list in form.errors.items %}
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                {% for error in error_list %}
+                <span class="error-type"> {{error}} </span>
+                {% endfor %} {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="login-info">
+            <div class="username">
+                <i class="fa-regular fa-id-badge id-logo"></i>
+                <input type="text" name="username" placeholder="아이디" class="registration-input" required />
+            </div>
+            <div class="password">
+                <i class="fa-solid fa-lock id-logo"></i>
+                <input type="password" name="password" placeholder="비밀번호" class="registration-input" required />
+            </div>
+            <div class="registration-box">
+                <button id="post-button">로그인</button>
+            </div>
+        </div>
+    </form>
+    <div class="social-login">
+        <form method="POST" action="{% provider_login_url 'kakao' %}">
+            {% csrf_token %} {% if form.username %}
+            <input type="hidden" name="{{ form.username.name }}" value="{{ form.username.value }}" />
+            {% endif %} {% if form.password %}
+            <input type="hidden" name="{{ form.password.name }}" value="{{ form.password.value }}" />
+            {% endif %} {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <img
+                src="{% static 'images/kakao_login_medium_narrow.png' %}"
+                alt="kakao"
+                onclick="this.parentNode.submit();"
+            />
+        </form>
+
+        <form method="POST" action="{% provider_login_url 'google' %}">
+            {% csrf_token %} {% if form.username %}
+            <input type="hidden" name="{{ form.username.name }}" value="{{ form.username.value }}" />
+            {% endif %} {% if form.password %}
+            <input type="hidden" name="{{ form.password.name }}" value="{{ form.password.value }}" />
+            {% endif %} {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <img src="{% static 'images/google_signin.png' %}" alt="google" onclick="this.parentNode.submit();" />
+        </form>
+    </div>
+</div>
+{% endblock %}

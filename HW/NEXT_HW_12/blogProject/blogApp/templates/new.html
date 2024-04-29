@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{%static 'new.css'%}" />
+{% endblock %}
+    <body>
+        {% block content %}
+        <form action="{% url 'new' %}" method="post">
+            {% csrf_token %}
+            <div class="question">
+                <h1>게시글에 맞는 카테고리를 골라주세요.</h1>
+                <input type="radio" name="category" value="hobby" />
+                <label for="category1">취미</label><br />
+                <input type="radio" name="category" value="food" />
+                <label for="음식">음식</label><br />
+                <input type="radio" name="category" value="programming" />
+                <label for="프로그래밍">프로그래밍</label><br />
+            </div>
+            <div class="question">
+                <h1>글 제목을 입력해주세요.</h1>
+                <textarea class="title" type="text" name="title" cols="100" rows="1" placeholder="제목을 입력해주세요." required /></textarea>
+            </div>
+            <div class="question">
+                <h1>글 내용을 입력해주세요.</h1>
+                <textarea class="content" name="content" cols="100" rows="10" placeholder="내용을 입력해주세요." required></textarea>
+            </div>
+            <button type="submit">작성완료</button>
+        </form>
+        {% endblock %}
+    </body>
+</html>
