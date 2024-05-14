@@ -44,3 +44,9 @@ class Reply(models.Model):
 
     def __str__(self):
         return self.content
+    
+class Like(models.Model):
+    article = models.ForeignKey(Article, on_delete= models.CASCADE, related_name= "likes")
+    creator = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="likes", default=1
+    )

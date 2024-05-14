@@ -29,12 +29,20 @@
             <div class="post-content">{{article.content}}</div>
         </div>
         <div class="article-footer">
-            <a href="#comment-form">
-                <div class="comment-cnt">
-                    <i class="fa-solid fa-comment"></i>
-                    <div>댓글 {{ vaild_comment_cnt }}</div>
-                </div>
-            </a>
+            <div class="count-container">
+                <span class="like-cnt">
+                    <button class="like-button" onclick="handleLike()">
+                        <i class="fa-solid fa-heart" style="color: {{ user_like|yesno:'#ff1f1f,#000000' }}"></i>
+                        <span class="like">공감 {{article.likes.count}}</span>
+                    </button>
+                </span>
+                <a href="#comment-form">
+                    <span class="comment-cnt">
+                        <i class="fa-solid fa-comment"></i>
+                        <span>댓글 {{ vaild_comment_cnt }}</span>
+                    </span>
+                </a>
+            </div>
         {% if article.last_viewed_user %}
             <div class="last-viewed">
                 <span>최근 열람: {{ article.last_viewed_user.username }} | </span>
@@ -307,6 +315,26 @@
             })
             .catch(function (error) {
                 console.error('Error posting the reply:', error);
+            });
+        }
+        function handleLike() {
+            const likeButton = document.querySelector(".like-button");
+            const likeCount = document.querySelector(".like");
+            const heart = document.querySelector(".fa-heart");
+
+            axios.post('/blog/like', {
+                article_pk: "{{article.pk}}"
+            })
+            .then(function (response) {
+                likeCount.innerHTML = "공감 " + response.data.like_count
+                if (response.data.is_like) {
+                    heart.style.color = "#ff1f1f";  
+                } else {
+                    heart.style.color = "#000000"; 
+                }
+            })
+            .catch(function (error) {
+                console.error('Error for:', error);
             });
         }
     </script>

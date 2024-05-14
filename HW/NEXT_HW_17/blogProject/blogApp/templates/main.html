@@ -28,12 +28,20 @@
             <div class="post-content">{{article.content}}</div>
         </div>
         <div class="article-footer">
-            <a href="#comment-form">
-                <div class="comment-cnt">
-                    <i class="fa-solid fa-comment"></i>
-                    <div>댓글 {{ vaild_comment_cnt }}</div>
-                </div>
-            </a>
+            <div class="count-container">
+                <span class="like-cnt">
+                    <button class="like-button" onclick="handleLike()">
+                        <i class="fa-solid fa-heart" style="color: {{ user_like|yesno:'#ff1f1f,#000000' }}"></i>
+                        <span class="like">공감 {{article.likes.count}}</span>
+                    </button>
+                </span>
+                <a href="#comment-form">
+                    <span class="comment-cnt">
+                        <i class="fa-solid fa-comment"></i>
+                        <span>댓글 {{ vaild_comment_cnt }}</span>
+                    </span>
+                </a>
+            </div>
         {% if article.last_viewed_user %}
             <div class="last-viewed">
                 <span>최근 열람: {{ article.last_viewed_user.username }} | </span>
@@ -200,14 +208,14 @@
 
         function submitComment() {
             const content = document.getElementById('comment-content').value;
-            const is_secret = document.getElementById('comment-secret').checked;
+            const isSecret = document.getElementById('comment-secret').checked;
             const creator = "{{user.username}}";
             const time = "{{comment.write_time}}";
 
             axios.post('/blog/comment', {
                 creator: creator,
                 content: content,
-                is_secret: is_secret,
+                is_secret: isSecret,
                 article_pk: "{{article.pk}}"
             })
             .then(function (response) {
@@ -256,7 +264,7 @@
 
                 // 데이터 업데이트
                 document.querySelector('.comment-container').innerHTML += newCommentHtml;
-                const commentCntElement = document.querySelector('.comment-cnt div');
+                const commentCntElement = document.querySelector('.comment-cnt span');
                 const currentCount = parseInt(commentCntElement.innerText.replace('댓글 ', ''), 10);
                 commentCntElement.innerText = `댓글 ${currentCount + 1}`;
             })
@@ -267,14 +275,14 @@
 
         function submitReply(commentId) {
             const content = document.getElementById(`reply-content-${commentId}`).value;
-            const is_secret = document.getElementById(`reply-secret-${commentId}`).checked;
+            const isSecret = document.getElementById(`reply-secret-${commentId}`).checked;
             const creator = "{{ user.username }}";
             const time = "{{reply.write_time}}";
            
             axios.post('/blog/reply', {
                 creator: creator,
                 content: content,
-                is_secret: is_secret,
+                is_secret: isSecret,
                 comment_pk: commentId,
                 article_pk: "{{article.pk}}"
             })
@@ -305,6 +313,27 @@
             })
             .catch(function (error) {
                 console.error('Error posting the reply:', error);
+            });
+        }
+
+        function handleLike() {
+            const likeButton = document.querySelector(".like-button");
+            const likeCount = document.querySelector(".like");
+            const heart = document.querySelector(".fa-heart");
+
+            axios.post('/blog/like', {
+                article_pk: "{{article.pk}}"
+            })
+            .then(function (response) {
+                likeCount.innerHTML = "공감 " + response.data.like_count
+                if (response.data.is_like) {
+                    heart.style.color = "#ff1f1f";  
+                } else {
+                    heart.style.color = "#000000"; 
+                }
+            })
+            .catch(function (error) {
+                console.error('Error for:', error);
             });
         }
     </script>

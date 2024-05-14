@@ -79,24 +79,35 @@
     margin-bottom: 0.5vh;
 }
 
+.count-container {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.like-cnt,
+.comment-cnt {
+    width: 75px;
+    text-align: flex-start;
+}
+
+.like-button {
+    all: unset;
+    cursor: pointer;
+}
+
 .comment-cnt {
     display: flex;
-    cursor: pointer;
-    padding: 7px 10px;
-    text-wrap: nowrap;
     align-items: center;
-    bottom: auto;
+    cursor: pointer;
+    padding: 7px 0px;
 }
 
 .fa-comment {
     margin-right: 5px;
 }
 
-.comment-cnt div {
-    font-weight: 600;
-}
-
-.last-viewed {
+.article-footer {
     font-weight: 600;
 }
 

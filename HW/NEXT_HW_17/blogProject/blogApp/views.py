@@ -42,7 +42,10 @@ def list(request):
     # Article
     article = Article.objects.order_by('id').last()
     category_kr = category_names[article.category]
-
+    if request.user.is_authenticated:
+        user_like = Like.objects.filter(creator=request.user, article=article).exists()
+    else:
+        user_like = False
     # Counts
     article_cnt = Article.objects.count()
     hobby_cnt = Article.objects.filter(category="hobby").count()
@@ -95,6 +98,7 @@ def list(request):
         'article_cnt': article_cnt,
         'vaild_comment_cnt': vaild_comment_cnt,
         'article': article,
+        'user_like': user_like,
         'category_kr': category_kr if category_kr else None,
         'after_article_id': after_article.id if after_article else None,
         'before_article_id': before_article.id if before_article else None,
@@ -109,7 +113,10 @@ def detail(request, article_id):
     # Article
     article =  Article.objects.get(pk = article_id)
     category_kr = category_names[article.category]
-
+    if request.user.is_authenticated:
+        user_like = Like.objects.filter(creator=request.user, article=article).exists()
+    else:
+        user_like = False
     # Counts
     article_cnt = Article.objects.count()
     hobby_cnt = Article.objects.filter(category="hobby").count()
@@ -160,6 +167,7 @@ def detail(request, article_id):
         'programming_cnt': programming_cnt,
         'vaild_comment_cnt': vaild_comment_cnt,
         'article': article,
+        'user_like': user_like,
         'category_kr': category_kr if category_kr else None,
         'after_article_id': after_article.id if after_article else None,
         'before_article_id': before_article.id if before_article else None,
@@ -169,7 +177,10 @@ def detail(request, article_id):
 def category(request, category):
     # Article
     article = Article.objects.filter(category=category).order_by('id').last()
-
+    if request.user.is_authenticated:
+        user_like = Like.objects.filter(creator=request.user, article=article).exists()
+    else:
+        user_like = False
     # Counts
     article_cnt = Article.objects.count()
     hobby_cnt = Article.objects.filter(category="hobby").count()
@@ -235,6 +246,7 @@ def category(request, category):
             'vaild_comment_cnt': vaild_comment_cnt,
             'category_cnt': category_cnt,
             'article': article,
+            'user_like': user_like,
             'category_kr': category_kr if category_kr else None,
             'after_article_id': after_article.id if after_article else None,
             'before_article_id': before_article.id if before_article else None,
@@ -246,7 +258,10 @@ def detail_category(request, category, article_id):
     # Article
     article = Article.objects.get(pk = article_id)
     category_kr = category_names[category]
-
+    if request.user.is_authenticated:
+        user_like = Like.objects.filter(creator=request.user, article=article).exists()
+    else:
+        user_like = False
     # Counts
     article_cnt = Article.objects.count()
     hobby_cnt = Article.objects.filter(category="hobby").count()
@@ -297,6 +312,7 @@ def detail_category(request, category, article_id):
         'vaild_comment_cnt': vaild_comment_cnt,
         'category_cnt': category_cnt,
         'article': article,
+        'user_like': user_like,
         'category_kr': category_kr if category_kr else None,
         'after_article_id': after_article.id if after_article else None,
         'before_article_id': before_article.id if before_article else None,
@@ -389,3 +405,28 @@ def reply(request):
         }
 
         return HttpResponse(json.dumps(response))
+    
+@csrf_exempt
+def like(request):
+    if request.method == 'POST':
+        request_body = json.loads(request.body)
+        article_pk = request_body['article_pk']
+        article = Article.objects.get(id=article_pk)
+        user_like = Like.objects.filter(creator = request.user, article = article)
+        is_like = False
+
+        if user_like.exists():
+            user_like.delete()
+        else:
+            Like.objects.create(
+                creator = request.user,
+                article = article
+            )
+            is_like = True
+        response = {
+            'like_count': article.likes.count(),
+            'is_like': is_like
+        }
+
+        return HttpResponse(json.dumps(response))
+        
