@@ -363,3 +363,29 @@ def comment(request):
         }
 
         return HttpResponse(json.dumps(response))
+    
+@csrf_exempt
+def reply(request):
+    if request.method == 'POST':
+        request_body = json.loads(request.body)
+        content = request_body['content']
+        is_secret = request_body.get('is_secret', False)
+        comment_pk = request_body['comment_pk']
+        comment = Comment.objects.get(id=comment_pk)
+
+        new_reply = Reply.objects.create(
+                creator = request.user,
+                content = content,
+                is_secret = is_secret,
+                comment = comment
+            )
+        
+        local_time = timezone.localtime(new_reply.write_time)
+        response = {
+            'reply_id': new_reply.id,
+            'creator': new_reply.creator.username,
+            'content': new_reply.content,
+            'time': local_time.strftime('%Y-%m-%d %H:%M')
+        }
+
+        return HttpResponse(json.dumps(response))

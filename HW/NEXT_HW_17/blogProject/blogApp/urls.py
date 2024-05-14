@@ -12,5 +12,6 @@ urlpatterns = [
     path('delete-article/<int:article_pk>', views.delete_article, name='delete-article'),
     path('delete-comment/<int:article_pk>/<int:comment_pk>/', views.delete_comment, name='delete-comment'),
     path('delete-reply/<int:article_pk>/<int:comment_pk>/<int:reply_pk>', views.delete_reply, name='delete-reply'),
-    path('comment',views.comment, name='comment')
+    path('comment',views.comment, name='comment'),
+    path('reply', views.reply, name='reply'),
 ]

@@ -72,10 +72,10 @@
                         <a href="{% url 'delete-comment' article.id comment.id %}">| 삭제</a>
                     {% endif %}
                 </div>
-                <div class="write-reply">
+                <div class="point-reply">
                     <span>답글</span>
                 </div>
-                <div class="replies">
+                <div class="reply-container-{{comment.id}}">
                     {% for reply in comment.replies.all %}
                     <div class="reply">
                         <i class="fa-solid fa-reply fa-rotate-180"></i>
@@ -103,35 +103,34 @@
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
+                {% endfor %}
+                </div>
                     <!-- Write Reply -->
-                    <div class="reply">
+                    <div class="write-reply">
                         <i class="fa-solid fa-reply fa-rotate-180"></i>
-                        <form class="reply-form" action="" method="post">
-                            {% csrf_token %}
+                        <div class="reply-form">
                             <input type="hidden" name="comment_id" value="{{ comment.id }}">
                             <div class="input-info">
-                                <label class="bold-text" for="creator"> <i class="fa-solid fa-circle-user fa-xl"></i></label>
+                                <label class="bold-text" for="creator - {{ comment.id }}"> <i class="fa-solid fa-circle-user fa-xl"></i></label>
                                 <span style="font-weight: 700;">{% if user.is_authenticated %}{{ user.username }}{% else %}비회원{% endif %}</span>
                             </div>
                             {% if user.is_authenticated == False %}
                             <div onclick="redirectToLogin()">
-                                <textarea class="input-content" name="content" cols="100" rows="4" placeholder="회원가입 이후 댓글 작성이 가능합니다." required /></textarea>
+                                <textarea id="reply-content-{{ comment.id }}" class="input-content" name="content" cols="100" rows="4" placeholder="회원가입 이후 댓글 작성이 가능합니다." /></textarea>
                             </div>
                             {% else %}
-                            <textarea class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." required /></textarea>
+                            <textarea id="reply-content-{{ comment.id }}" class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." /></textarea>
                             {% endif %} 
                             <div class="submit-container">
                                 <div class="secret">
-                                    <input type="checkbox" name="secret" id="secret"></input>
+                                    <input type="checkbox" name="secret" id="reply-secret-{{ comment.id }}"></input>
                                     <span>비밀댓글</span>
                                 </div>
-                                <button type="submit" name="reply">등록</button>   
+                                <button type="submit" onclick="submitReply({{ comment.id }})">등록</button>   
                             </div>
-                        </form>
+                        </div>
                     </div>                
                 </div>
-            </div>
         {% endfor %}
         </div>
         <!-- Write Comment -->
@@ -143,15 +142,15 @@
             <div id="comment-box">
                 {% if user.is_authenticated == False %}
                 <div onclick="redirectToLogin()">
-                    <textarea id="content" class="input-content" cols="100" rows="4" placeholder="회원가입 이후 댓글 작성이 가능합니다." required /></textarea>
+                    <textarea id="comment-content" class="input-content" cols="100" rows="4" placeholder="회원가입 이후 댓글 작성이 가능합니다." /></textarea>
                 </div>
                 {% else %}
-                <textarea id="content" class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." required /></textarea>
+                <textarea id="comment-content" class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." /></textarea>
                 {% endif %} 
             </div> 
             <div class="submit-container">
                 <div class="secret">
-                    <input type="checkbox" id="secret"></input>
+                    <input type="checkbox" id="comment-secret"></input>
                     <label for="secret">비밀댓글</label>
                 </div>
                 <button onclick="submitComment()">등록</button>
@@ -200,8 +199,8 @@
         }
 
         function submitComment() {
-            const content = document.getElementById('content').value;
-            const is_secret = document.getElementById('secret').checked;
+            const content = document.getElementById('comment-content').value;
+            const is_secret = document.getElementById('comment-secret').checked;
             const creator = "{{user.username}}";
             const time = "{{comment.write_time}}";
 
@@ -223,35 +222,89 @@
                             <span>${response.data.time}</span>
                             <a href="/blog/delete-comment/{{article.id}}/${response.data.comment_id}">| 삭제</a>
                         </div>
-                        <div class="write-reply">
+                        <div class="point-reply">
                             <span>답글</span>
                         </div>
-                        <div class="reply">
-                            <i class="fa-solid fa-reply fa-rotate-180"></i>
-                            <form class="reply-form" action="" method="post">
-                                {% csrf_token %}
-                                <input type="hidden" name="comment_id" value="{{ comment.id }}">
-                                <div class="input-info">
-                                    <label class="bold-text" for="creator"> <i class="fa-solid fa-circle-user fa-xl"></i></label>
-                                    <span style="font-weight: 700;">{% if user.is_authenticated %}{{ user.username }}{% else %}비회원{% endif %}</span>
+                        <div class="write-reply">
+                        <i class="fa-solid fa-reply fa-rotate-180"></i>
+                        <div class="reply-form">
+                            <input type="hidden" name="comment_id" value="${response.data.comment_id}">
+                            <div class="input-info">
+                                <label class="bold-text" for="creator - ${response.data.comment_id}"> <i class="fa-solid fa-circle-user fa-xl"></i></label>
+                                <span style="font-weight: 700;">{% if user.is_authenticated %}{{ user.username }}{% else %}비회원{% endif %}</span>
+                            </div>
+                            {% if user.is_authenticated == False %}
+                            <div onclick="redirectToLogin()">
+                                <textarea id="reply-content-${response.data.comment_id}" class="input-content" name="content" cols="100" rows="4" placeholder="회원가입 이후 댓글 작성이 가능합니다." /></textarea>
+                            </div>
+                            {% else %}
+                            <textarea id="reply-content-${response.data.comment_id}" class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." /></textarea>
+                            {% endif %} 
+                            <div class="submit-container">
+                                <div class="secret">
+                                    <input type="checkbox" name="secret" id="reply-secret-${response.data.comment_id}"></input>
+                                    <span>비밀댓글</span>
                                 </div>
-                                <textarea class="input-content" name="content" cols="100" rows="4" placeholder="블로그가 더 훈훈해지는 댓글 부탁드립니다." required /></textarea>
-                                <div class="submit-container">
-                                    <div class="secret">
-                                        <input type="checkbox" name="secret" id="secret"></input>
-                                        <span>비밀댓글</span>
-                                    </div>
-                                    <button type="submit" name="reply">등록</button>   
-                                </div>
-                            </form>
-                        </div>  
-                    </div>
+                                <button type="submit" onclick="submitReply(${response.data.comment_id})">등록</button>   
+                            </div>
+                        </div>
+                    </div>        
                 `;
+                // Input 초기화
+                document.getElementById('comment-content').value = '';
+                document.getElementById('comment-secret').checked = false;
+
+                // 데이터 업데이트
                 document.querySelector('.comment-container').innerHTML += newCommentHtml;
-                document.getElementById('content').value = '';
+                const commentCntElement = document.querySelector('.comment-cnt div');
+                const currentCount = parseInt(commentCntElement.innerText.replace('댓글 ', ''), 10);
+                commentCntElement.innerText = `댓글 ${currentCount + 1}`;
             })
             .catch(function (error) {
                 console.error('Error posting the comment:', error);
+            });
+        }
+
+        function submitReply(commentId) {
+            const content = document.getElementById(`reply-content-${commentId}`).value;
+            const is_secret = document.getElementById(`reply-secret-${commentId}`).checked;
+            const creator = "{{ user.username }}";
+            const time = "{{reply.write_time}}";
+           
+            axios.post('/blog/reply', {
+                creator: creator,
+                content: content,
+                is_secret: is_secret,
+                comment_pk: commentId,
+                article_pk: "{{article.pk}}"
+            })
+            .then(function (response) {
+                let newReplyHtml = `
+                    <div class="reply">
+                        <i class="fa-solid fa-reply fa-rotate-180"></i>
+                        <div class="reply-comment">
+                            <div class="comment-info">
+                                <i class="fa-solid fa-circle-user fa-xl"></i>
+                                <div>${response.data.creator}</div>
+                            </div>
+                            <div class="comment-content">
+                                ${response.data.content}
+                            </div>
+                            <div class="comment-time">
+                                <span>${response.data.time}</span>
+                                <a href="/blog/delete-reply/{{ article.id }}/${commentId}/${response.data.reply_id}">| 삭제</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                // Input 초기화
+                document.getElementById(`reply-content-${commentId}`).value = '';
+                document.getElementById(`reply-secret-${commentId}`).checked = false; 
+                // 데이터 업데이트
+                document.querySelector(`.reply-container-${commentId}`).innerHTML += newReplyHtml;
+            })
+            .catch(function (error) {
+                console.error('Error posting the reply:', error);
             });
         }
     </script>

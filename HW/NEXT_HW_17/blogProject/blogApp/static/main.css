@@ -162,7 +162,7 @@
     width: 80%;
 }
 
-.write-reply {
+.point-reply {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -186,7 +186,8 @@
     border: 1px solid #333;
 }
 
-.reply {
+.reply,
+.write-reply {
     margin-left: 10px;
     margin-top: 15px;
     display: flex;
