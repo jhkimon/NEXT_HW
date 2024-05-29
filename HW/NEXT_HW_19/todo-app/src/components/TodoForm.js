@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 const TodoForm = ({ addTodo }) => {
     const [input, setInput] = useState('');
@@ -15,14 +17,19 @@ const TodoForm = ({ addTodo }) => {
 
     return (
         <form onSubmit={handleSubmit} className="todo-form">
+            <span class="todo-today">오늘 한 일 </span>
             <input
                 type="text"
-                placeholder="할 일을 입력해주세요."
+                placeholder="오늘은 어떤 일이 있었나요?"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 required
             />
-            <button type="submit">할일 등록하기</button>
+            <button type="submit" className="todo-submit">
+                {' '}
+                <FontAwesomeIcon className="arrow" icon={faArrowAltCircleRight} />
+                할일 등록하기
+            </button>
         </form>
     );
 };

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faCloud, faCloudRain, faSnowflake, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 function Luck() {
     const [mode, setMode] = useState('HOME');
@@ -14,9 +16,13 @@ function Luck() {
         '오늘은 무엇을 해도 졸린 날입니다. 얼른 집에서 주무세요.',
     ];
 
+    const daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];
+
     const today = new Date();
+    const year = today.getFullYear();
     const month = today.getMonth() + 1;
     const day = today.getDate();
+    const dayOfWeek = daysOfWeek[today.getDay()];
 
     const handleLuck = () => {
         const luckIndex = Math.floor(Math.random() * lucks.length);
@@ -26,20 +32,39 @@ function Luck() {
 
     return (
         <>
-            <div>
-                {month}월 {day}일
+            <div className="date-container">
+                <span className="date">날짜</span>
+                <span className="today-date">
+                    {year} 년 {month} 월 {day} 일 ({dayOfWeek})
+                </span>
+                <span className="weather">날씨</span>
+                <span className="today-weather">
+                    <FontAwesomeIcon icon={faSun} />
+                    <FontAwesomeIcon icon={faCloud} />
+                    <FontAwesomeIcon icon={faCloudRain} />
+                    <FontAwesomeIcon icon={faSnowflake} />
+                </span>
             </div>
-            {mode === 'READ' ? (
-                <>
-                    <div>{luckToday}</div>
-                    <button onClick={() => setMode('INIT')}>다시 뽑으러 가기</button>
-                </>
-            ) : (
-                <>
-                    <div>오늘의 행운을 뽑아보세요!</div>
-                    <button onClick={handleLuck}>운세 보기</button>
-                </>
-            )}
+            <div className="luck-container">
+                <span className="luck">오늘의 운세</span>
+                {mode === 'READ' ? (
+                    <>
+                        <span className="luck-today">{luckToday}</span>
+                        <button onClick={() => setMode('INIT')}>
+                            <FontAwesomeIcon className="arrow" icon={faArrowAltCircleRight} />
+                            다시 뽑으러 가기
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <span className="luck-today">오늘의 행운을 뽑아보세요!</span>
+                        <button onClick={handleLuck}>
+                            <FontAwesomeIcon className="arrow" icon={faArrowAltCircleRight} />
+                            운세 보기
+                        </button>
+                    </>
+                )}
+            </div>
         </>
     );
 }
