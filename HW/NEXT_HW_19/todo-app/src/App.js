@@ -28,6 +28,7 @@ function App() {
 
     return (
         <div className="App">
+            <Luck></Luck>
             <TodoForm addTodo={addTodo} />
             <TodoList todos={todos} completeTodo={completeTodo} editTodo={editTodo} removeTodo={removeTodo} />
         </div>
