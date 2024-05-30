@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
+import CurrentDate from './components/CurrentDate';
 import Luck from './components/Luck';
 import picture1 from './diary.png';
 
@@ -29,6 +30,7 @@ function App() {
 
     return (
         <div className="App">
+            <CurrentDate />
             <Luck />
             <img src={picture1}></img>
             <TodoForm addTodo={addTodo} />

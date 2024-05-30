@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faSun,
-    faCloud,
-    faCloudRain,
-    faSnowflake,
-    faArrowAltCircleRight,
-    faArrowRightRotate,
-} from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleRight, faArrowRightRotate } from '@fortawesome/free-solid-svg-icons';
 
 function Luck() {
     const [mode, setMode] = useState('HOME');
@@ -23,14 +16,6 @@ function Luck() {
         '오늘은 무엇을 해도 졸린 날입니다. 얼른 집에서 주무세요.',
     ];
 
-    const daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];
-
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth() + 1;
-    const day = today.getDate();
-    const dayOfWeek = daysOfWeek[today.getDay()];
-
     const handleLuck = () => {
         const luckIndex = Math.floor(Math.random() * lucks.length);
         setLuckToday(lucks[luckIndex]);
@@ -39,19 +24,6 @@ function Luck() {
 
     return (
         <>
-            <div className="date-container">
-                <span className="date">날짜</span>
-                <span className="today-date">
-                    {year} 년 {month} 월 {day} 일 ({dayOfWeek})
-                </span>
-                <span className="weather">날씨</span>
-                <span className="today-weather">
-                    <FontAwesomeIcon icon={faSun} />
-                    <FontAwesomeIcon icon={faCloud} />
-                    <FontAwesomeIcon icon={faCloudRain} />
-                    <FontAwesomeIcon icon={faSnowflake} />
-                </span>
-            </div>
             <div className="luck-container">
                 <span className="luck">오늘의 운세</span>
                 {mode === 'READ' ? (
