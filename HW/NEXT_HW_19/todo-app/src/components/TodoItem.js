@@ -10,11 +10,11 @@ const TodoItem = ({ todo, completeTodo, editTodo, removeTodo }) => {
     };
 
     return (
-        <div>
+        <div className="todo-container">
             <input type="checkbox" checked={todo.isComplete} onChange={() => completeTodo(todo.id)} />
             {mode === 'READ' ? (
                 <>
-                    <span>{todo.text}</span>
+                    <span className={todo.isComplete ? 'strikethrough' : ''}>{todo.text}</span>
                     <button onClick={() => setMode('UPDATE')}>수정하기</button>
                     <button onClick={() => removeTodo(todo.id)}>삭제하기</button>
                 </>

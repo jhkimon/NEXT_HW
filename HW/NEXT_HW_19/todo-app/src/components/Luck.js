@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faCloud, faCloudRain, faSnowflake, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
+import {
+    faSun,
+    faCloud,
+    faCloudRain,
+    faSnowflake,
+    faArrowAltCircleRight,
+    faArrowRightRotate,
+} from '@fortawesome/free-solid-svg-icons';
 
 function Luck() {
     const [mode, setMode] = useState('HOME');
@@ -51,7 +58,7 @@ function Luck() {
                     <>
                         <span className="luck-today">{luckToday}</span>
                         <button onClick={() => setMode('INIT')}>
-                            <FontAwesomeIcon className="arrow" icon={faArrowAltCircleRight} />
+                            <FontAwesomeIcon className="arrow" icon={faArrowRightRotate} />
                             다시 뽑으러 가기
                         </button>
                     </>
