@@ -1,6 +1,14 @@
+import ad from '../ad.png';
+
 export function Banner() {
     return (
         <>
+            <div className="banner-title">
+                <h1>
+                    <span>마이위키</span>: 대문
+                </h1>
+                <img src={ad}></img>
+            </div>
             <div className="banner">
                 <h2>
                     여러분이 가꾸어 나가는 <span>지식의 나무</span>

@@ -23,9 +23,11 @@ export function Main() {
 
     return (
         <>
-            <Banner />
-            <PostForm addPost={addPost} />
-            <PostList posts={posts} />
+            <div className="wrapper">
+                <Banner />
+                <PostForm addPost={addPost} />
+                <PostList posts={posts} />
+            </div>
         </>
     );
 }

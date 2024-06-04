@@ -29,7 +29,9 @@ export function PostDetail() {
                 ))}
             </div>
             <div className="table-content">
-                <h2>개요</h2>
+                <div>
+                    <span>1. </span> 개요
+                </div>
             </div>
             <div className="post-content">{post.content}</div>
         </div>
