@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export function PostDetail() {
@@ -17,7 +17,7 @@ export function PostDetail() {
     }, [postId]);
 
     if (!post) {
-        return <div>존재하지 않는 게시물입니다.</div>;
+        return <h1 className="post-detail">존재하지 않는 게시물입니다.</h1>;
     }
 
     return (

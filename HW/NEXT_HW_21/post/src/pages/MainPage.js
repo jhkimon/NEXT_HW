@@ -3,7 +3,7 @@ import { PostForm } from '../components/PostForm';
 import { PostList } from '../components/PostList';
 import { Banner } from '../components/Banner';
 
-export function Main() {
+export function MainPage() {
     const [posts, setPosts] = useState([]);
 
     // LocalStorage

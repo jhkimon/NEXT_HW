@@ -1,6 +1,6 @@
 import { PostDetail } from '../components/PostDetail';
 
-export function Detail() {
+export function DetailPage() {
     return (
         <>
             <div className="wrapper">

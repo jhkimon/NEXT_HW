@@ -1,4 +1,4 @@
-import ad from '../ad.png';
+import ad from '../assets/images/ad.png';
 
 export function Banner() {
     return (

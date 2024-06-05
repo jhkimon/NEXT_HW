@@ -1,7 +1,7 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Main } from './pages/main';
-import { Detail } from './pages/detail';
+import { Routes, Route } from 'react-router-dom';
+import { MainPage } from './pages/MainPage';
+import { DetailPage } from './pages/DetailPage';
 import { Header } from './components/Header';
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
         <>
             <Header />
             <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/detail/:postId" element={<Detail />} />
+                <Route path="/" element={<MainPage />} />
+                <Route path="/detail/:postId" element={<DetailPage />} />
             </Routes>
         </>
     );
