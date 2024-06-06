@@ -1,0 +1,28 @@
+.category-buttons {
+    margin-bottom: 20px;
+}
+
+.search-box {
+    margin: 20px 0;
+}
+
+.weather-info {
+    background: #e2e8f0;
+    border: 1px solid #cbd5e0;
+    color: #2d3748;
+    padding: 10px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.weather-info p:before {
+    content: '☀️ '; /* 햇살 아이콘 */
+}
+
+.weather-info p:nth-child(3):before {
+    content: '⛱️ '; /* 해변 아이콘 */
+}
+
+weather-info p:nth-child(5):before {
+    content: '☁️ '; /* 구름 아이콘 */
+}
