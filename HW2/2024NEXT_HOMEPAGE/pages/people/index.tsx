@@ -29,7 +29,10 @@ export default function People() {
     }, [isMobile, isDesktop]);
 
     const handleMemberClick = (person) => {
-        setSelectedPerson(person);
+        if (person.gen >= 12) {
+            // 12기부터 모달 클릭 가능
+            setSelectedPerson(person);
+        }
     };
 
     const closeModal = () => {

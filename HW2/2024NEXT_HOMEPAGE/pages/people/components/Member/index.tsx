@@ -10,10 +10,10 @@ import 'aos/dist/aos.css'; //aos 애니메이션 스타일
 
 interface MemberProps {
     peopleInformation: PEOPLE_INFORMATION_TYPE[];
-    onMemberClick: (person: PEOPLE_INFORMATION_TYPE) => void; // onMemberClick 추가
+    onMemberClick: (person: PEOPLE_INFORMATION_TYPE) => void; // 계속 사용하는 경우
 }
 
-export default function Member({ peopleInformation }: MemberProps) {
+export default function Member({ peopleInformation, onMemberClick }: MemberProps) {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
 
@@ -37,7 +37,7 @@ export default function Member({ peopleInformation }: MemberProps) {
                         {peopleInformation && //멤버 정보 배열이 존재하면 매핑 시작
                             peopleInformation.map((item: PEOPLE_INFORMATION_TYPE, index) => {
                                 return (
-                                    <S.MemberWrapper key={index}>
+                                    <S.MemberWrapper key={index} onClick={() => onMemberClick(item)}>
                                         {/* Image */}
                                         <S.MemberImgBox>
                                             {item.imgSrc ? (

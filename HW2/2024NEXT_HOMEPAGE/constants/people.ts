@@ -473,6 +473,16 @@ export const PEOPLE_INFORMATION: PEOPLE_INFORMATION_TYPE[] = [
         imgSrc: '/images/profile/11gen/11기_최유빈.png',
         managementTeam: MANAGEMENT_TEAM_POSITION.EXECUTIVE,
     },
+    // {
+    //     gen: PEOPLE_ITEMS.TWELVE,
+    //     name: '김정현',
+    //     department: DEPARTMENT.BUSINESS,
+    //     classOf: 19,
+    //     imgSrc: '/images/profile/12gen/12기_김정현.png',
+    //     managementTeam: MANAGEMENT_TEAM_POSITION.NORMAL,
+    // },
+
+    // 12기 이후부터 interface 이관 필요
     {
         gen: PEOPLE_ITEMS.TWELVE,
         name: '김정현',
@@ -480,5 +490,16 @@ export const PEOPLE_INFORMATION: PEOPLE_INFORMATION_TYPE[] = [
         classOf: 19,
         imgSrc: '/images/profile/12gen/12기_김정현.png',
         managementTeam: MANAGEMENT_TEAM_POSITION.NORMAL,
+
+        // 추가 정보
+        intro: 'Exponential growth of compound interest.',
+        instagram: 'https://www.instagram.com/jhkim_922',
+        linkedin: 'https://www.linkedin.com/in/%EC%A0%95%ED%98%84-%EA%B9%80-883a442b2/',
+        career: [
+            { startDate: '2022.6', endDate: '2022.8', role: '마케팅 스타트업 인턴' },
+            { startDate: '2024.1', endDate: '', role: 'NEXT 12기' },
+        ],
+        tools: ['django', 'react', 'Slack/Notion'],
+        skills: ['기획', '프로젝트 관리', '데이터 분석'],
     },
 ];
