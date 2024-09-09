@@ -15,19 +15,19 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ person, onRequestClose }) =
             <S.ModalContent>
                 <S.ProfileContainer>
                     <S.CloseButton onClick={onRequestClose}>×</S.CloseButton>
-                    <S.ProfileImgBox>
+                    <S.BackgroundImageBox>
+                        <Image src="/images/next12/next12.png" alt="Next 12" layout="fill" objectFit="cover" />
+                    </S.BackgroundImageBox>
+                    <S.SmallProfileImgRow>
                         {person.imgSrc ? (
-                            <Image
-                                src={person.imgSrc}
-                                alt={person.name}
-                                width={120}
-                                height={120}
-                                style={{ borderRadius: '10%' }}
-                            />
+                            <S.SmallProfileImg>
+                                <Image src={person.imgSrc} alt={person.name} width={100} height={100} />
+                            </S.SmallProfileImg>
                         ) : (
                             <S.PlaceholderImg />
                         )}
-                    </S.ProfileImgBox>
+                    </S.SmallProfileImgRow>
+
                     <S.ProfileHeader>
                         <S.ProfileNameContainer>
                             <S.ProfileName>{person.name}</S.ProfileName>

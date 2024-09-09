@@ -1,20 +1,42 @@
 import styled from 'styled-components';
 
+export const BackgroundImageBox = styled.div`
+    width: 90%;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+`;
+
+export const SmallProfileImgRow = styled.div`
+    display: flex;
+    gap: 10px;
+    margin-top: -50px;
+`;
+
+export const SmallProfileImg = styled.div`
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+    z-index: 1;
+`;
+
 export const ModalOverlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1;
 `;
 
 export const ModalContent = styled.div`
-    background: #fff;
+    position: relative;
+    background: rgba(255, 255, 255, 0.97);
     padding: 40px;
     border-radius: 15px;
     width: 90%;
@@ -33,13 +55,14 @@ export const ProfileContainer = styled.div`
 
 export const CloseButton = styled.button`
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: -25px;
+    right: -20px;
     background: none;
     border: none;
     font-size: 25px;
     cursor: pointer;
     color: #999;
+    z-index: 2;
 
     &:hover {
         color: #333;
@@ -56,6 +79,7 @@ export const ProfileNameContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+    padding-top: 20px;
 `;
 
 export const SocialIcons = styled.div`
@@ -100,7 +124,7 @@ export const ProfileIntro = styled.p`
     font-size: 16px;
     font-weight: 500;
     color: #555;
-    padding: 10px 0;
+    padding: 20px 0;
     border-bottom: 0.5px solid;
 `;
 

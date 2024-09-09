@@ -29,7 +29,7 @@
     {% endfor %}
 </div>
 <!-- 방법 1: Fetch API  -->
-<script>
+<!-- <script>
     const likeButton = document.querySelector('.like-button');
     const likeCount = document.querySelector('.like-count');
 
@@ -48,8 +48,7 @@
     };
 
     likeButton.addEventListener('click', handleLike);
-</script>
-{% endblock %}
+</script> -->
 <!-- 방법 2 Axios => 권장 -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
@@ -63,10 +62,10 @@
         }).then((res) => (likeCount2.innerHTML = '좋아요 수' + res.data.like_count));
     };
 
-    likeButton2.addEventListener('click', handleLike);
+    likeButton2.addEventListener('click', handleLike2);
 </script>
 <!-- Async/Await -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     const likeButton3 = document.querySelector('.like-button');
     const likeCount3 = document.querySelector('.like-count');
@@ -81,4 +80,6 @@
     };
 
     likeButton3.addEventListener('click', handleLike);
-</script>
+</script> -->
+
+{% endblock %}
