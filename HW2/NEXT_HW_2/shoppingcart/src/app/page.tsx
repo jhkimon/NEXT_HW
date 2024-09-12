@@ -1,8 +1,10 @@
-export default function Home() {
+import React from 'react';
+
+export default function HomePage() {
     return (
-        <div>
-            <h1>안녕하세요, Next.js!</h1>
-            <p>이것은 첫 번째 Next.js 페이지입니다.</p>
+        <div className="text-center p-12">
+            <h1 className="text-3xl font-bold">Welcome to My Home Page</h1>
+            <p className="mt-4 text-lg">This is a simple homepage built with Next.js and TypeScript.</p>
         </div>
     );
 }
