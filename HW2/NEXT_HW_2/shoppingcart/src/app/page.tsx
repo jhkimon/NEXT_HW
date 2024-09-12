@@ -1,10 +1,16 @@
 import React from 'react';
+import { Product } from '../components/ui/Product';
+import { PRODUCTS } from '../constants/common';
+import { ProductProps } from '../types';
 
 export default function HomePage() {
     return (
-        <div className="text-center p-12">
-            <h1 className="text-3xl font-bold">Welcome to My Home Page</h1>
-            <p className="mt-4 text-lg">This is a simple homepage built with Next.js and TypeScript.</p>
+        <div className="flex flex-col text-center p-12">
+            {PRODUCTS.map((product: ProductProps) => (
+                <div key={product.id} className="mb-4">
+                    <Product product={product} />
+                </div>
+            ))}
         </div>
     );
 }

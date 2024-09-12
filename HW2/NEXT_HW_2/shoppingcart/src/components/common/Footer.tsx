@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-gray-800 p-5 text-center text-white mt-auto">
-            <p>&copy; {new Date().getFullYear()} My Website. All Rights Reserved.</p>
+        <footer className="p-3 text-center mt-auto">
+            <h2>&copy; {new Date().getFullYear()} 소프트웨어벤처창업학회 NEXT</h2>
         </footer>
     );
 };
