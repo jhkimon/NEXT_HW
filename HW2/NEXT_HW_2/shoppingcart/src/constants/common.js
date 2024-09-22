@@ -1,5 +1,4 @@
 export const PRODUCTS = [
-    // 상품 목록 추가
     {
         id: 0,
         name: '김치찌개',

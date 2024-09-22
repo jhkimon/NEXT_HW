@@ -5,7 +5,7 @@ import { faHome, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 const Header: React.FC = () => {
     return (
-        <header className="bg-slate-600 p-2 text-center">
+        <header className="bg-slate-600 p-3 pr-5 text-center">
             <nav>
                 <ul className="flex flex-row-reverse gap-5 list-none">
                     <li>

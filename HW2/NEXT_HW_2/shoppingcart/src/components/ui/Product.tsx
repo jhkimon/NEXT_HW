@@ -1,12 +1,32 @@
 'use client';
-import React from 'react';
+
+import React, { useContext } from 'react';
 import { Button } from '../common/Button';
 import { useRouter } from 'next/navigation';
-import { ProductProps, ProductComponentProps } from '../../types/index';
-import { handleCart, handleDescription } from '../../features/cart';
+import { ProductComponentProps } from '../../types/index';
+import { handleDescription } from '../../features/cart';
+import { CartContext } from '../../context/CartContext';
 
 export const Product: React.FC<ProductComponentProps> = ({ product, ...rest }) => {
     const router = useRouter();
+    const cartContext = useContext(CartContext);
+
+    if (!cartContext) {
+        console.error('CartContext is undefined. Make sure the component is wrapped in CartProvider.');
+        return null;
+    }
+
+    const { addToCart } = cartContext;
+
+    const handleAddToCart = () => {
+        if (product) {
+            addToCart({
+                id: product.id,
+                name: product.name,
+            });
+        }
+        alert(`${product.name}이(가) 장바구니에 추가되었습니다.`);
+    };
 
     return (
         <div
@@ -24,11 +44,11 @@ export const Product: React.FC<ProductComponentProps> = ({ product, ...rest }) =
                     {product.description}
                 </div>
             </div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
                 <Button onClick={() => handleDescription(router, product)} aria-label="View product details">
                     제품 설명 보기
                 </Button>
-                <Button onClick={() => handleCart(product)} aria-label="Add to cart">
+                <Button onClick={handleAddToCart} aria-label="Add to cart">
                     장바구니 담기
                 </Button>
             </div>
