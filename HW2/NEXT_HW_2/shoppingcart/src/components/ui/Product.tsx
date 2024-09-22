@@ -1,37 +1,24 @@
 'use client';
 
-import React, { useContext } from 'react';
+import React from 'react';
 import { Button } from '../common/Button';
 import { useRouter } from 'next/navigation';
-import { ProductComponentProps } from '../../types/index';
+import { CartItem } from '../../types/index';
 import { handleDescription } from '../../features/cart';
-import { CartContext } from '../../context/CartContext';
+import { handleAddToCart } from '../../features/cart';
 
-export const Product: React.FC<ProductComponentProps> = ({ product, ...rest }) => {
+export interface CartItemComponentProps {
+    product: CartItem;
+    [key: string]: any;
+}
+
+export const Product: React.FC<CartItemComponentProps> = ({ product, ...rest }) => {
     const router = useRouter();
-    const cartContext = useContext(CartContext);
-
-    if (!cartContext) {
-        console.error('CartContext is undefined. Make sure the component is wrapped in CartProvider.');
-        return null;
-    }
-
-    const { addToCart } = cartContext;
-
-    const handleAddToCart = () => {
-        if (product) {
-            addToCart({
-                id: product.id,
-                name: product.name,
-            });
-        }
-        alert(`${product.name}이(가) 장바구니에 추가되었습니다.`);
-    };
 
     return (
         <div
             {...rest}
-            className="w-full flex justify-between items-center flex-auto p-3 shadow-lg rounded-lg cursor-pointer"
+            className="w-full flex justify-between items-center flex-auto p-4 shadow-lg rounded-lg cursor-pointer"
         >
             <div className="flex flex-col gap-4">
                 <h2
@@ -48,7 +35,7 @@ export const Product: React.FC<ProductComponentProps> = ({ product, ...rest }) =
                 <Button onClick={() => handleDescription(router, product)} aria-label="View product details">
                     제품 설명 보기
                 </Button>
-                <Button onClick={handleAddToCart} aria-label="Add to cart">
+                <Button onClick={() => handleAddToCart(product)} aria-label="Add to cart">
                     장바구니 담기
                 </Button>
             </div>
