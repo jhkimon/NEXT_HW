@@ -24,19 +24,10 @@ const getGuestbook = async (req, res) => {
                 g.message, 
                 g.created_at, 
                 g.is_pinned,
-                COUNT(CASE WHEN e.emotion_type = 'HEART' THEN 1 END) AS heart_count,
-                COUNT(CASE WHEN e.emotion_type = 'LIKE' THEN 1 END) AS like_count,
-                COUNT(CASE WHEN e.emotion_type = 'CHECK' THEN 1 END) AS check_count,
-                COUNT(CASE WHEN e.emotion_type = 'LAUGH' THEN 1 END) AS laugh_count,
-                COUNT(CASE WHEN e.emotion_type = 'WOW' THEN 1 END) AS wow_count,
-                COUNT(CASE WHEN e.emotion_type = 'SAD' THEN 1 END) AS sad_count,
+                g.emotion_type AS emotion,  -- 감정 상태를 직접 가져오기
                 (SELECT json_agg(r) FROM replies r WHERE r.guestbook_id = g.id) AS replies
             FROM 
                 guestbook g
-            LEFT JOIN 
-                emotions e ON g.id = e.message_id
-            GROUP BY 
-                g.id
             ORDER BY 
                 g.id DESC
         `);

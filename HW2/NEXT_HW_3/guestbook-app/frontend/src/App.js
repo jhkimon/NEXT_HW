@@ -1,97 +1,99 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import GuestbookEntry from './components/GuestbookEntry';
+import GuestbookForm from './components/GuestbookForm';
+import Announcement from './components/Announcement';
+import { fetchGuestbookEntries, addGuestbookEntry, deleteGuestbookEntry, editGuestbookEntry } from './api/guestbookApi';
+import { fetchPinnedEntry, editPinnedEntry } from './api/pinnedApi';
+import './styles/App.css';
 
 function App() {
-    const [name, setName] = useState('');
-    const [message, setMessage] = useState('');
-    const [password, setPassword] = useState('');
     const [guestbookEntries, setGuestbookEntries] = useState([]);
+    const [pinnedEntry, setPinnedEntry] = useState(null);
 
+    // 방명록 및 공지사항 데이터 로드
     useEffect(() => {
-        fetch('http://localhost:3001/api/guestbook')
-            .then((response) => response.json())
-            .then((data) => setGuestbookEntries(data));
+        fetchGuestbookEntries().then(setGuestbookEntries);
+        fetchPinnedEntry().then((data) => {
+            if (data.length > 0) setPinnedEntry(data[0]);
+        });
     }, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        fetch('http://localhost:3001/api/guestbook', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, message, password }),
-        })
-            .then((response) => response.json())
-            .then((newEntry) => {
-                setGuestbookEntries([newEntry, ...guestbookEntries]);
-                setName('');
-                setMessage('');
-                setPassword('');
-            });
-    };
-
-    const handleDelete = (id) => {
-        const userPassword = prompt('비밀번호를 입력하세요:');
-        fetch(`http://localhost:3001/api/guestbook/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ password: userPassword }),
-        }).then((response) => {
-            if (response.status === 403) {
-                alert('비밀번호가 일치하지 않습니다.');
-            } else {
-                setGuestbookEntries(guestbookEntries.filter((entry) => entry.id !== id));
-            }
+    // 방명록 항목 추가 함수
+    const handleAddEntry = (newEntry) => {
+        addGuestbookEntry(newEntry).then((entry) => {
+            setGuestbookEntries([entry, ...guestbookEntries]);
         });
     };
 
-    const handleEdit = (id) => {
+    // 방명록 항목 수정 함수
+    const handleEditEntry = (id) => {
         const newMessage = prompt('수정할 메시지를 입력하세요:');
         const userPassword = prompt('비밀번호를 입력하세요:');
-        fetch(`http://localhost:3001/api/guestbook/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: newMessage, password: userPassword }),
-        }).then((response) => {
-            if (response.status === 403) {
-                alert('비밀번호가 일치하지 않습니다.');
-            } else {
-                response.json().then((updatedEntry) => {
-                    setGuestbookEntries(guestbookEntries.map((entry) => (entry.id === id ? updatedEntry : entry)));
-                });
+        if (newMessage && userPassword) {
+            editGuestbookEntry(id, newMessage, userPassword).then((response) => {
+                if (response.error) {
+                    alert(response.error);
+                } else {
+                    setGuestbookEntries(
+                        guestbookEntries.map((entry) =>
+                            entry.id === id ? { ...entry, message: response.message } : entry
+                        )
+                    );
+                }
+            });
+        }
+    };
+
+    // 방명록 항목 삭제 함수
+    const handleDeleteEntry = (id) => {
+        const userPassword = prompt('비밀번호를 입력하세요:');
+        if (userPassword) {
+            deleteGuestbookEntry(id, userPassword).then((response) => {
+                if (response.error) {
+                    alert(response.error);
+                } else {
+                    setGuestbookEntries(guestbookEntries.filter((entry) => entry.id !== id));
+                }
+            });
+        }
+    };
+
+    // 공지 등록 및 해제 처리 함수
+    const handlePinToggle = (entryId) => {
+        const currentPinnedEntry = guestbookEntries.find((entry) => entry.is_pinned);
+
+        // 새로운 공지가 설정되면 기존 공지 해제
+        const updatedEntries = guestbookEntries.map((entry) => {
+            if (entry.id === entryId) {
+                const isCurrentlyPinned = entry.is_pinned;
+                editPinnedEntry(entryId, !isCurrentlyPinned); // 서버 업데이트
+                return { ...entry, is_pinned: !isCurrentlyPinned };
             }
+            // 다른 항목은 공지 해제
+            return { ...entry, is_pinned: false };
         });
+
+        setGuestbookEntries(updatedEntries);
+
+        // 공지가 설정되면 pinnedEntry 업데이트, 해제되면 null로 설정
+        const newPinnedEntry = updatedEntries.find((entry) => entry.id === entryId && entry.is_pinned);
+        setPinnedEntry(newPinnedEntry || null);
     };
 
     return (
         <div className="App">
-            <h1>방명록</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="이름" value={name} onChange={(e) => setName(e.target.value)} required />
-                <textarea placeholder="메시지" value={message} onChange={(e) => setMessage(e.target.value)} required />
-                <input
-                    type="password"
-                    placeholder="비밀번호"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">남기기</button>
-            </form>
-            <h2>방명록 목록</h2>
+            <Announcement pinnedMessage={pinnedEntry} />
+            <h1>Guestbook</h1>
+            <GuestbookForm addEntry={handleAddEntry} />
             <ul>
                 {guestbookEntries.map((entry) => (
-                    <li key={entry.id}>
-                        <strong>{entry.name}:</strong> {entry.message} <br />
-                        <small>{new Date(entry.created_at).toLocaleString()}</small> <br />
-                        <button onClick={() => handleEdit(entry.id)}>수정</button>
-                        <button onClick={() => handleDelete(entry.id)}>삭제</button>
-                    </li>
+                    <GuestbookEntry
+                        key={entry.id}
+                        entry={entry}
+                        editEntry={handleEditEntry}
+                        deleteEntry={handleDeleteEntry}
+                        onPinToggle={handlePinToggle}
+                    />
                 ))}
             </ul>
         </div>

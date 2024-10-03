@@ -1,0 +1,21 @@
+.pinned-message {
+    background-color: #b4b4b4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.pinned-icon {
+    color: #3a68a4;
+    font-size: 1.5rem;
+}
+
+.pinned-text {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}

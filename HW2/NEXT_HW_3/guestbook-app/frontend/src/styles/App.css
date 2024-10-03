@@ -77,15 +77,3 @@ li button {
     margin-right: 10px;
     background-color: #dc3545;
 }
-
-li button:first-child {
-    background-color: #ffc107;
-}
-
-li button:first-child:hover {
-    background-color: #e0a800;
-}
-
-li button:last-child:hover {
-    background-color: #c82333;
-}
