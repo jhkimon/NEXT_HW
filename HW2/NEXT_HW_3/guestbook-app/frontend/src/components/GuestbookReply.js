@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchReplyEntries, addReplyEntry, deleteReplyEntry, editReplyEntry } from '../api/replyApi';
+import { fetchReplyEntries, addReplyEntry, deleteReplyEntry } from '../api/replyApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import '../styles/GuestbookReply.css';
@@ -47,7 +47,7 @@ const GuestbookReply = ({ entryId, entryUser, initialReplies }) => {
                 {replies &&
                     replies.map((reply) => (
                         <li key={reply.id} className="reply-item">
-                            <span>
+                            <span className="entry-info">
                                 <strong>{reply.name}:</strong> {reply.message}
                             </span>
 

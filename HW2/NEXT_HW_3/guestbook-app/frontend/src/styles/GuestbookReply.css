@@ -17,6 +17,10 @@
     border-bottom: 1px solid #f0f0f0;
 }
 
+.entry-info {
+    padding: 3px;
+}
+
 .reply-user {
     margin: 5px;
 }

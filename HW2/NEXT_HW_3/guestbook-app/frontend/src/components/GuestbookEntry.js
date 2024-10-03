@@ -56,7 +56,7 @@ const GuestbookEntry = ({ entry, editEntry, deleteEntry, onPinToggle }) => {
     return (
         <li className="guestbook-entry">
             <div className="entry-header">
-                <div>
+                <div className="entry-info">
                     <strong>{entry.name}:</strong> {entry.message} <br />
                     <small className="created-at">{new Date(entry.created_at).toLocaleString()}</small>
                 </div>

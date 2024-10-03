@@ -60,8 +60,6 @@ function App() {
 
     // 공지 등록 및 해제 처리 함수
     const handlePinToggle = (entryId) => {
-        const currentPinnedEntry = guestbookEntries.find((entry) => entry.is_pinned);
-
         // 새로운 공지가 설정되면 기존 공지 해제
         const updatedEntries = guestbookEntries.map((entry) => {
             if (entry.id === entryId) {
@@ -83,7 +81,7 @@ function App() {
     return (
         <div className="App">
             <Announcement pinnedMessage={pinnedEntry} />
-            <h1>Guestbook</h1>
+            <h1>🎙️ 질문 게시판</h1>
             <GuestbookForm addEntry={handleAddEntry} />
             <ul>
                 {guestbookEntries.map((entry) => (

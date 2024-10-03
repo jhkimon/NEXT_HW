@@ -8,6 +8,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+.entry-info {
+    padding: 3px;
+}
+
 .created-at {
     margin-top: 5px;
 }
