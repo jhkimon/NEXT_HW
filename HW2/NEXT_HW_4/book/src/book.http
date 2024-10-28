@@ -1,0 +1,30 @@
+@server = http://localhost:3000
+
+# 전체 책 목록 조회
+GET {{server}}/book
+
+### 책 생성
+POST {{server}}/book
+Content-Type: application/json
+
+{
+    "title": "안녕하세요",
+    "author": "김정현",
+    "isAvailable": true
+}
+
+### 책 조회
+GET {{server}}/book/1
+
+### 책 삭제
+DELETE {{server}}/book/1
+
+### 책 정보 수정
+PUT {{server}}/book/2
+Content-Type: application/json
+
+{
+    "title": "수정입니다.",
+    "author": "한강",
+    "isAvailable": false
+}
