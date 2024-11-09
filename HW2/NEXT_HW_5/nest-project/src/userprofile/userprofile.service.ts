@@ -68,7 +68,7 @@ export class UserprofileService {
   async findOne(username: string): Promise<UserProfile> {
     try {
       if (!username) {
-        throw new BadRequestException('username을 제공해야 합니다.');
+        throw new BadRequestException('username이 존재하지 않습니다.');
       }
 
       const userProfile = await this.userprofileRepository.findOne({
@@ -128,7 +128,7 @@ export class UserprofileService {
   async findOneByUserId(userId: number): Promise<UserProfile> {
     try {
       if (!userId) {
-        throw new BadRequestException('유저 ID가 필요합니다.');
+        throw new BadRequestException('존재하지 않는 유저 ID입니다.');
       }
 
       const userProfile = await this.userprofileRepository.findOne({

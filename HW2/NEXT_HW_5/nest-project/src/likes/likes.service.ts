@@ -31,14 +31,14 @@ export class LikesService {
     try {
       const user = await this.userRepository.findOne({ where: { id: userId } });
       if (!user) {
-        throw new NotFoundException('사용자를 찾을 수 없습니다.');
+        throw new NotFoundException('사용자가 존재하지 않습니다.');
       }
 
       const board = await this.boardRepository.findOne({
         where: { id: boardId },
       });
       if (!board) {
-        throw new NotFoundException('게시판이 없습니다.');
+        throw new NotFoundException('게시판이 존재하지 않습니다.');
       }
 
       // 이미 좋아요를 눌렀는지 확인
@@ -74,21 +74,21 @@ export class LikesService {
     try {
       const user = await this.userRepository.findOne({ where: { id: userId } });
       if (!user) {
-        throw new NotFoundException('사용자를 찾을 수 없습니다.');
+        throw new NotFoundException('사용자가 존재하지 않습니다.');
       }
 
       const board = await this.boardRepository.findOne({
         where: { id: boardId },
       });
       if (!board) {
-        throw new NotFoundException('게시판이 없습니다.');
+        throw new NotFoundException('게시판이 존재하지 않습니다.');
       }
 
       const like = await this.likeRepository.findOne({
         where: { user: { id: userId }, board: { id: boardId } },
       });
       if (!like) {
-        throw new NotFoundException('좋아요 기록이 없습니다.');
+        throw new NotFoundException('좋아요 기록이 존재하지 않습니다.');
       }
 
       await this.likeRepository.remove(like);
@@ -111,7 +111,7 @@ export class LikesService {
         where: { id: boardId },
       });
       if (!board) {
-        throw new NotFoundException('게시판이 없습니다.');
+        throw new NotFoundException('게시판이 존재하지 않습니다.');
       }
 
       const likes = await this.likeRepository.find({
