@@ -1,0 +1,294 @@
+2024. 11. 11. 오후 8:32:09    WARN  GET /boards 401 ::1 14ms Anonymous
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6MSwiaWF0IjoxNzMxMTYzNDU3LCJleHAiOjE3MzExNjcwNTd9.diR0Vd1bgI34mvhEq8l4AFsabnIiAQPD3kQ7yngw-Ts","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"78e7e019-e2c5-4898-a43b-724020463370","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:401
+Body: {"message":"Unauthorized","statusCode":401}
+2024. 11. 11. 오후 8:32:20    WARN  POST /auth/login 404 ::1 7ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi2","password":"hello"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"c2c9e3c7-4bbc-4d7f-b839-b70163dfa617","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"47"}
+[RESPONSE] Status:404
+Body: {"message":"User with username hi2 not found","error":"Not Found","statusCode":404}
+2024. 11. 11. 오후 8:32:24     LOG  POST /users 201 ::1 106ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"hi","password":"hello"}
+2024. 11. 11. 오후 8:32:29     LOG  POST /auth/login 201 ::1 101ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi","password":"hello"}
+2024. 11. 11. 오후 8:32:49    WARN  POST /userprofile 404 ::1 1ms Anonymous
+[REQUEST] Params: {"0":"userprofile"} Query: {} Body: {"avatarUrl":"https://www.youtube.com/","bio":"유튜브 공식채널입니다."} Headers: {"content-type":"application/json","authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpIiwic3ViIjoxLCJpYXQiOjE3MzEzMjQ3NDksImV4cCI6MTczMTMyODM0OX0.VoHkr_KY_DN4JHhEarGuuOK3RaT4CEEx86KE5dzmaww","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"ac195873-20cc-4caf-a4ff-f6d489bbc8b4","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"91"}
+[RESPONSE] Status:404
+Body: {"message":"Cannot POST /userprofile","error":"Not Found","statusCode":404}
+2024. 11. 11. 오후 8:33:02     LOG  POST /boards 201 ::1 16ms hi
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {"title":"안녕하세요","content":"안녕히 가세요"}
+2024. 11. 11. 오후 8:33:06     LOG  GET /boards 200 ::1 6ms hi
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 8:33:30    WARN  GET /boards/1 401 ::1 2ms Anonymous
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6MSwiaWF0IjoxNzMxMTYzNDU3LCJleHAiOjE3MzExNjcwNTd9.diR0Vd1bgI34mvhEq8l4AFsabnIiAQPD3kQ7yngw-Ts","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"be7412c0-7113-4d5b-baa9-ae9b7df28df2","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:401
+Body: {"message":"Unauthorized","statusCode":401}
+2024. 11. 11. 오후 8:33:35     LOG  GET /boards/1 200 ::1 9ms hi
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {}
+2024. 11. 11. 오후 8:33:42     LOG  GET /boards/1 200 ::1 7ms hi
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {}
+2024. 11. 11. 오후 8:39:11   ERROR  POST /users 500 ::1 110ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"hi","password":"hello","role":"user"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"a1b2b8f5-bfc7-45fc-95e2-3b3acca02768","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"66"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 8:39:15     LOG  POST /users 201 ::1 98ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"hi1","password":"hello","role":"user"}
+2024. 11. 11. 오후 8:39:28     LOG  POST /auth/login 201 ::1 96ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 8:39:35     LOG  GET /boards 200 ::1 6ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 8:39:40     LOG  POST /boards 201 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {"title":"안녕하세요","content":"안녕히 가세요"}
+2024. 11. 11. 오후 8:39:46     LOG  GET /boards/1 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {}
+2024. 11. 11. 오후 8:39:48     LOG  GET /boards/1 200 ::1 6ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {}
+2024. 11. 11. 오후 8:39:51     LOG  GET /boards/2 200 ::1 4ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {}
+2024. 11. 11. 오후 8:48:38   ERROR  POST /users 500 ::1 103ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"hi1","password":"hello","role":"user","a":"a"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"09f1c151-c7b4-4913-a028-f505c44f5c34","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"81"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 8:48:43   ERROR  POST /users 500 ::1 95ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"hi1","password":"hello","role":"user"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"36d633b3-41bd-4b11-ac4f-9d0bbe39fb25","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"67"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 8:48:46     LOG  POST /auth/login 201 ::1 96ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 8:48:47     LOG  POST /auth/login 201 ::1 96ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 8:48:48     LOG  POST /auth/login 201 ::1 93ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 8:48:48     LOG  POST /auth/login 201 ::1 97ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 8:57:29    WARN  DELETE /boards/1 401 ::1 11ms Anonymous
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6MSwiaWF0IjoxNzMxMTYzNDU3LCJleHAiOjE3MzExNjcwNTd9.diR0Vd1bgI34mvhEq8l4AFsabnIiAQPD3kQ7yngw-Ts","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"bb5baa6d-c622-4728-8411-f96bd67daa3e","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:401
+Body: {"message":"Unauthorized","statusCode":401}
+2024. 11. 11. 오후 8:57:37     LOG  GET /boards 200 ::1 11ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 8:57:46    WARN  DELETE /boards/1 401 ::1 2ms Anonymous
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6MSwiaWF0IjoxNzMxMTYzNDU3LCJleHAiOjE3MzExNjcwNTd9.diR0Vd1bgI34mvhEq8l4AFsabnIiAQPD3kQ7yngw-Ts","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"1e1b6c1f-2c5c-4954-bd1f-ad8cef2190d0","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:401
+Body: {"message":"Unauthorized","statusCode":401}
+2024. 11. 11. 오후 8:57:47    WARN  DELETE /boards/1 401 ::1 4ms Anonymous
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6MSwiaWF0IjoxNzMxMTYzNDU3LCJleHAiOjE3MzExNjcwNTd9.diR0Vd1bgI34mvhEq8l4AFsabnIiAQPD3kQ7yngw-Ts","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"cab4410c-00ff-4223-b91f-ad9ffa945072","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:401
+Body: {"message":"Unauthorized","statusCode":401}
+2024. 11. 11. 오후 9:03:47     LOG  POST /auth/login 201 ::1 98ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 9:03:54    WARN  DELETE /boards/1 403 ::1 3ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6MywiaWF0IjoxNzMxMzI2NjI3LCJleHAiOjE3MzEzMzAyMjd9.KkdG9qgvixEq7mWbozWi3pn6wciM0aOeQtAcwUgeHSw","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"8bfe2787-f0e7-4378-98b8-2e995b280c23","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:05:18     LOG  POST /users 201 ::1 103ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"admin","password":"hello","role":"admin"}
+2024. 11. 11. 오후 9:05:24     LOG  POST /auth/login 201 ::1 93ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"admin","password":"hello"}
+2024. 11. 11. 오후 9:05:33     LOG  POST /boards 201 ::1 10ms admin
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {"title":"안녕하세요","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:05:37     LOG  GET /boards 200 ::1 5ms admin
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:05:39     LOG  GET /boards/2 200 ::1 9ms admin
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {}
+2024. 11. 11. 오후 9:05:42    WARN  DELETE /boards/1 403 ::1 3ms admin
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwic3ViIjo2LCJpYXQiOjE3MzEzMjY3MjQsImV4cCI6MTczMTMzMDMyNH0.DGA6Yr3HfMGNXi3wyvdw97FMJG0YZ4zo2G6KN6B0Kq8","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"f3b36d65-b83c-4d1c-9018-1588674c08b1","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:05:46    WARN  DELETE /boards/1 403 ::1 4ms admin
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwic3ViIjo2LCJpYXQiOjE3MzEzMjY3MjQsImV4cCI6MTczMTMzMDMyNH0.DGA6Yr3HfMGNXi3wyvdw97FMJG0YZ4zo2G6KN6B0Kq8","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"2c7ba2d1-4abf-4956-b2e2-9325ad6b3746","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:07:32     LOG  POST /auth/login 201 ::1 95ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"admin","password":"hello"}
+2024. 11. 11. 오후 9:07:36     LOG  GET /boards/2 200 ::1 17ms admin
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {}
+2024. 11. 11. 오후 9:07:40     LOG  DELETE /boards/1 200 ::1 10ms admin
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {}
+2024. 11. 11. 오후 9:07:47     LOG  GET /boards 200 ::1 6ms admin
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:11:26    WARN  POST /auth/login 401 ::1 93ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"admin","password":"hello1"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"8c729c79-bee9-41e7-8798-0d658d6d2909","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"50"}
+[RESPONSE] Status:401
+Body: {"message":"Invalid credentials","error":"Unauthorized","statusCode":401}
+2024. 11. 11. 오후 9:11:28     LOG  POST /auth/login 201 ::1 112ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"admin","password":"hello"}
+2024. 11. 11. 오후 9:11:30     LOG  POST /auth/login 201 ::1 100ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"admin","password":"hello"}
+2024. 11. 11. 오후 9:11:31     LOG  POST /auth/login 201 ::1 94ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"admin","password":"hello"}
+2024. 11. 11. 오후 9:11:45     LOG  POST /auth/login 201 ::1 97ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi","password":"hello"}
+2024. 11. 11. 오후 9:11:53    WARN  DELETE /boards/1 403 ::1 6ms hi
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpIiwic3ViIjoxLCJyb2xlIjpudWxsLCJpYXQiOjE3MzEzMjcxMDUsImV4cCI6MTczMTMzMDcwNX0.KXQwYGM7JxUU_Wu3uUMd265xjbNAPJqlzlzrCueOz6k","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"87c97bd7-075f-4565-9499-9103c1e6d561","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:11:54    WARN  DELETE /boards/1 403 ::1 3ms hi
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpIiwic3ViIjoxLCJyb2xlIjpudWxsLCJpYXQiOjE3MzEzMjcxMDUsImV4cCI6MTczMTMzMDcwNX0.KXQwYGM7JxUU_Wu3uUMd265xjbNAPJqlzlzrCueOz6k","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"a2a07825-0c87-4555-9c97-596d5dac8f51","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:11:56     LOG  GET /boards/2 200 ::1 15ms admin
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {}
+2024. 11. 11. 오후 9:11:58     LOG  GET /boards 200 ::1 9ms admin
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:13:37     LOG  POST /auth/login 201 ::1 98ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi","password":"hello"}
+2024. 11. 11. 오후 9:20:20     LOG  POST /auth/login 201 ::1 98ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi","password":"hello"}
+2024. 11. 11. 오후 9:20:29     LOG  POST /auth/login 201 ::1 120ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 9:20:36     LOG  GET /boards 200 ::1 21ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:20:44    WARN  DELETE /boards/1 403 ::1 5ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"6f0f0b33-3d16-426b-a627-570fd60cf2d6","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:20:57   ERROR  PATCH /boards/1 500 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"5be3f43e-6d3c-4651-8430-7f9731c26e06","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"0"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 9:21:16    WARN  PATCH /boards/1 404 ::1 11ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {"title":"안녕하세요?","content":"안녕히 가세요"} Headers: {"content-type":"application/json","authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"f672cbba-154a-4714-ae16-ebf25d0ea330","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"73"}
+[RESPONSE] Status:404
+Body: {"message":"Board with ID 1 not found","error":"Not Found","statusCode":404}
+2024. 11. 11. 오후 9:21:20     LOG  GET /boards 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:21:25     LOG  PATCH /boards/2 200 ::1 6ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {"title":"안녕하세요?","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:21:26     LOG  PATCH /boards/2 200 ::1 10ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {"title":"안녕하세요?","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:21:28     LOG  PATCH /boards/3 200 ::1 10ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"안녕하세요?","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:21:32     LOG  PATCH /boards/2 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {"title":"안녕하세요?","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:21:39     LOG  PATCH /boards/3 200 ::1 9ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"안녕하세요?","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:21:42     LOG  PATCH /boards/3 200 ::1 5ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:21:45     LOG  GET /boards/3 200 ::1 7ms admin
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {}
+2024. 11. 11. 오후 9:21:46     LOG  GET /boards/3 200 ::1 9ms admin
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {}
+2024. 11. 11. 오후 9:21:49     LOG  PATCH /boards/3 200 ::1 10ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:22:39     LOG  PATCH /boards/3 200 ::1 15ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:23:50    WARN  DELETE /boards/1 403 ::1 12ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"86668c2e-f0b5-456e-a7ab-5112ab88385b","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:23:51    WARN  DELETE /boards/1 403 ::1 4ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"153449d7-bafe-4511-8b55-7b833dacfc19","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:23:51    WARN  DELETE /boards/1 403 ::1 3ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"8c18bcaf-d9de-40a4-9877-927e1bbc8138","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:23:53    WARN  DELETE /boards/2 403 ::1 4ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"2236182c-8299-4aa8-a850-5f4118291695","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:23:54    WARN  DELETE /boards/2 403 ::1 5ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"191387e2-4dfd-4f19-8c9d-6a1714851400","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:23:56    WARN  DELETE /boards/2 403 ::1 4ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"5d528919-4cb9-4f9b-ac48-7020bd2ee69e","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:25:12     LOG  POST /boards 201 ::1 14ms admin
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {"title":"안녕하세요","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:25:16     LOG  PATCH /boards/3 200 ::1 22ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:25:22     LOG  PATCH /boards/2 200 ::1 9ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:25:24     LOG  PATCH /boards/3 200 ::1 9ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:25:24     LOG  PATCH /boards/3 200 ::1 12ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:28:32     LOG  PATCH /boards/3 200 ::1 12ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:28:37     LOG  POST /auth/login 201 ::1 108ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 9:28:38     LOG  POST /auth/login 201 ::1 99ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 9:28:38     LOG  POST /auth/login 201 ::1 95ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 9:28:47   ERROR  POST /users 500 ::1 119ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"admin","password":"hello","role":"admin"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"4d432467-65b3-4fb4-a288-ad4b1abe3513","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"70"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 9:28:50     LOG  POST /auth/login 201 ::1 91ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"hi1","password":"hello"}
+2024. 11. 11. 오후 9:29:00     LOG  GET /boards 200 ::1 4ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:29:07    WARN  DELETE /boards/2 403 ::1 3ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjgxMzAsImV4cCI6MTczMTMzMTczMH0.WvoNxXzxOldx8EUzmlyNCu008RIku50bEx2-HfCjrco","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"ebbeee58-ccca-4e02-a9cc-ed311d8429dd","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:29:10    WARN  DELETE /boards/4 403 ::1 4ms hi1
+[REQUEST] Params: {"0":"boards/4"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjgxMzAsImV4cCI6MTczMTMzMTczMH0.WvoNxXzxOldx8EUzmlyNCu008RIku50bEx2-HfCjrco","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"4147817b-366a-4d3f-911f-19123dbb6c54","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:29:12    WARN  DELETE /boards/2 403 ::1 5ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjgxMzAsImV4cCI6MTczMTMzMTczMH0.WvoNxXzxOldx8EUzmlyNCu008RIku50bEx2-HfCjrco","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"310d39f4-f0d8-47cd-9912-406c3153cf81","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"Forbidden resource","error":"Forbidden","statusCode":403}
+2024. 11. 11. 오후 9:29:16     LOG  PATCH /boards/2 200 ::1 12ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:29:18     LOG  PATCH /boards/3 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:29:21     LOG  GET /boards 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:29:22     LOG  GET /boards 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:31:46     LOG  GET /boards 200 ::1 21ms hi1
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {}
+2024. 11. 11. 오후 9:31:52     LOG  PATCH /boards/3 200 ::1 15ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:31:53     LOG  PATCH /boards/3 200 ::1 10ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:31:53     LOG  PATCH /boards/3 200 ::1 11ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:31:54     LOG  PATCH /boards/3 200 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:31:55     LOG  PATCH /boards/3 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:33:36     LOG  PATCH /boards/3 200 ::1 27ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:33:37     LOG  PATCH /boards/3 200 ::1 12ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:33:38     LOG  PATCH /boards/3 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:08     LOG  PATCH /boards/3 200 ::1 20ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:09     LOG  PATCH /boards/3 200 ::1 15ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:10     LOG  PATCH /boards/3 200 ::1 13ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:10     LOG  PATCH /boards/3 200 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:11     LOG  PATCH /boards/3 200 ::1 12ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:14     LOG  PATCH /boards/3 200 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:15     LOG  PATCH /boards/3 200 ::1 6ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:17     LOG  PATCH /boards/4 200 ::1 12ms hi1
+[REQUEST] Params: {"0":"boards/4"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:18    WARN  PATCH /boards/5 404 ::1 11ms hi1
+[REQUEST] Params: {"0":"boards/5"} Query: {} Body: {"title":"111","content":"안녕히 가세요"} Headers: {"content-type":"application/json","authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"ec2e47d3-2fc1-4576-849e-3c714ce3576e","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"60"}
+[RESPONSE] Status:404
+Body: {"message":"Board with ID 5 not found","error":"Not Found","statusCode":404}
+2024. 11. 11. 오후 9:38:20     LOG  PATCH /boards/2 200 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:21    WARN  PATCH /boards/1 404 ::1 7ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {"title":"111","content":"안녕히 가세요"} Headers: {"content-type":"application/json","authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"57a02ecc-80d6-493b-a86b-0463ecd58a93","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"60"}
+[RESPONSE] Status:404
+Body: {"message":"Board with ID 1 not found","error":"Not Found","statusCode":404}
+2024. 11. 11. 오후 9:38:22     LOG  PATCH /boards/2 200 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/2"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:23     LOG  PATCH /boards/3 200 ::1 5ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}
+2024. 11. 11. 오후 9:38:24     LOG  PATCH /boards/4 200 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/4"} Query: {} Body: {"title":"111","content":"안녕히 가세요"}

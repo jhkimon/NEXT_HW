@@ -1,0 +1,20 @@
+2024. 11. 11. 오후 8:39:11   ERROR  POST /users 500 ::1 110ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"hi","password":"hello","role":"user"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"a1b2b8f5-bfc7-45fc-95e2-3b3acca02768","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"66"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 8:48:38   ERROR  POST /users 500 ::1 103ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"hi1","password":"hello","role":"user","a":"a"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"09f1c151-c7b4-4913-a028-f505c44f5c34","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"81"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 8:48:43   ERROR  POST /users 500 ::1 95ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"hi1","password":"hello","role":"user"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"36d633b3-41bd-4b11-ac4f-9d0bbe39fb25","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"67"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 9:20:57   ERROR  PATCH /boards/1 500 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/1"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjc2MjksImV4cCI6MTczMTMzMTIyOX0.zOjviunN5b9B1PptQhyGOt5c-8mlqViQQ45DY-k0JLs","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"5be3f43e-6d3c-4651-8430-7f9731c26e06","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"0"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}
+2024. 11. 11. 오후 9:28:47   ERROR  POST /users 500 ::1 119ms Anonymous
+[REQUEST] Params: {"0":"users"} Query: {} Body: {"username":"admin","password":"hello","role":"admin"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"4d432467-65b3-4fb4-a288-ad4b1abe3513","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"70"}
+[RESPONSE] Status:500
+Body: {"statusCode":500,"message":"Internal server error"}

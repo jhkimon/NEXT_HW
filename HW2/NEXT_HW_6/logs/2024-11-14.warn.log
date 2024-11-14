@@ -1,0 +1,44 @@
+2024. 11. 14. 오후 3:08:33    WARN  GET /boards 401 ::1 12ms Anonymous
+[REQUEST] Params: {"0":"boards"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzEzMjgxMzAsImV4cCI6MTczMTMzMTczMH0.WvoNxXzxOldx8EUzmlyNCu008RIku50bEx2-HfCjrco","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"4423c193-3dd5-45e8-b852-9136b1fb2974","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:401
+Body: {"message":"Unauthorized","statusCode":401}
+2024. 11. 14. 오후 3:08:59    WARN  GET /boards/3 401 ::1 3ms Anonymous
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwic3ViIjo2LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzEzMjY4NTIsImV4cCI6MTczMTMzMDQ1Mn0.j1qd_6an7du2z8IPLEOmQu3Y4JjflYYMzhAElFO0tgM","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"467251e6-1a77-437f-a56c-e6d292de2794","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:401
+Body: {"message":"Unauthorized","statusCode":401}
+2024. 11. 14. 오후 3:09:12    WARN  DELETE /boards/3 403 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzE1NjQ1MTgsImV4cCI6MTczMTU2ODExOH0.Gx5FDdsM5YtCmZNFuScjwQPc_W1xa0B-Ljvu2QbXN7E","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"b131237b-9259-4ff8-9e03-b1052efdb472","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"You are not the author of this board","error":"Forbidden","statusCode":403}
+2024. 11. 14. 오후 3:09:13    WARN  DELETE /boards/3 403 ::1 9ms hi1
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzE1NjQ1MTgsImV4cCI6MTczMTU2ODExOH0.Gx5FDdsM5YtCmZNFuScjwQPc_W1xa0B-Ljvu2QbXN7E","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"75c90014-dee4-4ff0-bd69-3b55a38a0437","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:403
+Body: {"message":"You are not the author of this board","error":"Forbidden","statusCode":403}
+2024. 11. 14. 오후 3:09:44    WARN  DELETE /boards/10 404 ::1 5ms hi1
+[REQUEST] Params: {"0":"boards/10"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzE1NjQ1MTgsImV4cCI6MTczMTU2ODExOH0.Gx5FDdsM5YtCmZNFuScjwQPc_W1xa0B-Ljvu2QbXN7E","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"1e3be75c-4afb-40f7-9032-0b978577c442","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:404
+Body: {"message":"Board with ID 10 not found","error":"Not Found","statusCode":404}
+2024. 11. 14. 오후 3:09:45    WARN  DELETE /boards/10 404 ::1 8ms hi1
+[REQUEST] Params: {"0":"boards/10"} Query: {} Body: {} Headers: {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpMSIsInN1YiI6Mywicm9sZSI6InVzZXIiLCJpYXQiOjE3MzE1NjQ1MTgsImV4cCI6MTczMTU2ODExOH0.Gx5FDdsM5YtCmZNFuScjwQPc_W1xa0B-Ljvu2QbXN7E","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"26694c28-578b-432c-af4f-90d66339d51c","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive"}
+[RESPONSE] Status:404
+Body: {"message":"Board with ID 10 not found","error":"Not Found","statusCode":404}
+2024. 11. 14. 오후 3:11:01    WARN  POST /auth/login 401 ::1 90ms Anonymous
+[REQUEST] Params: {"0":"auth/login"} Query: {} Body: {"username":"admin","password":"admin"} Headers: {"content-type":"application/json","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"e4746415-7618-4705-b8d3-66d2baaf5fe2","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"49"}
+[RESPONSE] Status:401
+Body: {"message":"Invalid credentials","error":"Unauthorized","statusCode":401}
+2024. 11. 14. 오후 3:11:44    WARN  PATCH /boards/3 403 ::1 8ms hi
+[REQUEST] Params: {"0":"boards/3"} Query: {} Body: {"title":"111","content":"안녕히 가세요"} Headers: {"content-type":"application/json","authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpIiwic3ViIjoxLCJyb2xlIjpudWxsLCJpYXQiOjE3MzE1NjQ2ODgsImV4cCI6MTczMTU2ODI4OH0.1qFDVDbRWhCzjBzi9qPeRGr0AgxfIqBP2gVw3U0ayDg","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"bd339284-964a-4e34-96c0-55bea1d33554","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"60"}
+[RESPONSE] Status:403
+Body: {"message":"작성자만 해당 댓글을 지울 수 있습니다.","error":"Forbidden","statusCode":403}
+2024. 11. 14. 오후 3:11:46    WARN  PATCH /boards/6 404 ::1 7ms hi
+[REQUEST] Params: {"0":"boards/6"} Query: {} Body: {"title":"111","content":"안녕히 가세요"} Headers: {"content-type":"application/json","authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhpIiwic3ViIjoxLCJyb2xlIjpudWxsLCJpYXQiOjE3MzE1NjQ2ODgsImV4cCI6MTczMTU2ODI4OH0.1qFDVDbRWhCzjBzi9qPeRGr0AgxfIqBP2gVw3U0ayDg","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"e1a1642c-d758-4a4e-ae6f-fa443253e913","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"60"}
+[RESPONSE] Status:404
+Body: {"message":"Board with ID 6 not found","error":"Not Found","statusCode":404}
+2024. 11. 14. 오후 3:12:41    WARN  PATCH /boards/5 403 ::1 6ms admin
+[REQUEST] Params: {"0":"boards/5"} Query: {} Body: {"title":"111","content":"안녕히 가세요"} Headers: {"content-type":"application/json","authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwic3ViIjo2LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzE1NjQ3NTMsImV4cCI6MTczMTU2ODM1M30.FvoKvYtETseotWhOY6UPbxwy7yilFtkcJSB2MN4Wuio","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"e851575a-0243-41f8-bfed-3d1c88c42529","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"60"}
+[RESPONSE] Status:403
+Body: {"message":"작성자만 해당 댓글을 지울 수 있습니다.","error":"Forbidden","statusCode":403}
+2024. 11. 14. 오후 3:12:42    WARN  PATCH /boards/5 403 ::1 9ms admin
+[REQUEST] Params: {"0":"boards/5"} Query: {} Body: {"title":"111","content":"안녕히 가세요"} Headers: {"content-type":"application/json","authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwic3ViIjo2LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzE1NjQ3NTMsImV4cCI6MTczMTU2ODM1M30.FvoKvYtETseotWhOY6UPbxwy7yilFtkcJSB2MN4Wuio","user-agent":"PostmanRuntime/7.42.0","accept":"*/*","cache-control":"no-cache","postman-token":"47ca99a6-7def-4cfa-aa27-5aafaefe4bcc","host":"localhost:3000","accept-encoding":"gzip, deflate, br","connection":"keep-alive","content-length":"60"}
+[RESPONSE] Status:403
+Body: {"message":"작성자만 해당 댓글을 지울 수 있습니다.","error":"Forbidden","statusCode":403}

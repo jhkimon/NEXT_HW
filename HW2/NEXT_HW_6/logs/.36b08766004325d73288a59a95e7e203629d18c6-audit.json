@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 10
+    },
+    "auditLog": "/Users/jhkim/Desktop/NEXT/HW2/NEXT_HW_6/session6/logs/.36b08766004325d73288a59a95e7e203629d18c6-audit.json",
+    "files": [
+        {
+            "date": 1731327214459,
+            "name": "/Users/jhkim/Desktop/NEXT/HW2/NEXT_HW_6/session6/logs/2024-11-11.info.log",
+            "hash": "f4c537857f7993e830587ed92034d678df7d35db5ed71ae0305c5200245e4401"
+        }
+    ],
+    "hashType": "sha256"
+}
